@@ -1,0 +1,121 @@
+{
+  "categories": [
+
+    {
+      "name": "Air Conditioner",
+      "items": [
+        {
+          "keywords": ["ac not cooling", "cooling problem"],
+          "answer": "AC not cooling may be caused by dirty filters, low refrigerant gas, blocked condenser, thermostat settings, or compressor issues."
+        },
+        {
+          "keywords": ["water leakage", "ac leaking"],
+          "answer": "Water leakage is usually caused by a blocked drain pipe, dirty filters, frozen coils, or improper installation."
+        },
+        {
+          "keywords": ["gas charging", "low gas"],
+          "answer": "Low refrigerant usually indicates a leak. Leak testing and proper gas charging are recommended."
+        }
+      ]
+    },
+
+    {
+      "name": "Refrigerator",
+      "items": [
+        {
+          "keywords": ["fridge not cooling"],
+          "answer": "Check thermostat settings, condenser coils, door gasket, and compressor operation."
+        },
+        {
+          "keywords": ["ice build up"],
+          "answer": "Ice build-up may be caused by a faulty defrost system or damaged door seal."
+        }
+      ]
+    },
+
+    {
+      "name": "Washing Machine",
+      "items": [
+        {
+          "keywords": ["not spinning"],
+          "answer": "The issue may be caused by a damaged belt, motor problem, lid switch fault, or overloaded drum."
+        },
+        {
+          "keywords": ["not draining"],
+          "answer": "Check the drain pump, drain hose blockage, and filter condition."
+        }
+      ]
+    },
+
+    {
+      "name": "Microwave",
+      "items": [
+        {
+          "keywords": ["not heating"],
+          "answer": "A faulty magnetron, capacitor, or door switch may prevent heating."
+        }
+      ]
+    },
+
+    {
+      "name": "Geyser",
+      "items": [
+        {
+          "keywords": ["water not hot"],
+          "answer": "Check thermostat settings, heating element condition, and power supply."
+        }
+      ]
+    },
+
+    {
+      "name": "TV",
+      "items": [
+        {
+          "keywords": ["no display", "black screen"],
+          "answer": "Check power supply, HDMI source, backlight, and display panel condition."
+        }
+      ]
+    },
+
+    {
+      "name": "WiFi Router",
+      "items": [
+        {
+          "keywords": ["internet not working", "wifi problem"],
+          "answer": "Restart the router, check ISP connection, verify cables, and inspect signal strength."
+        }
+      ]
+    },
+
+    {
+      "name": "Electrician",
+      "items": [
+        {
+          "keywords": ["switch not working"],
+          "answer": "The switch, wiring, MCB, or power supply may need inspection."
+        }
+      ]
+    },
+
+    {
+      "name": "Plumbing",
+      "items": [
+        {
+          "keywords": ["water leakage pipe"],
+          "answer": "Inspect joints, valves, pipe cracks, and water pressure levels."
+        }
+      ]
+    },
+
+    {
+      "name": "Water Purifier",
+      "items": [
+        {
+          "keywords": ["purifier not working"],
+          "answer": "Check power supply, filters, RO membrane, and water pressure."
+        }
+      ]
+    }
+
+  ]
+}

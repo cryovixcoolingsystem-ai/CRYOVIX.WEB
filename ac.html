@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AC Repair & Services - Cryovix Fixify</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+
+        /* Hero Banner */
+        .page-banner {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+            color: #ffffff;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .page-banner h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .page-banner p {
+            color: #93c5fd;
+            font-size: 1.1rem;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: #0f172a;
+            border-left: 5px solid #3b82f6;
+            padding-left: 12px;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.15);
+            border-color: #93c5fd;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background: #eff6ff;
+            color: #2563eb;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .card-title h3 {
+            font-size: 1.2rem;
+            color: #0f172a;
+        }
+
+        .details-list {
+            list-style: none;
+            margin: 15px 0;
+        }
+
+        .details-list li {
+            font-size: 0.95rem;
+            color: #475569;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .details-list li i {
+            color: #10b981;
+            font-size: 0.8rem;
+        }
+
+        .meta-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-top: 1px dashed #e2e8f0;
+            margin-top: 10px;
+        }
+
+        .time-badge {
+            font-size: 0.85rem;
+            background: #f1f5f9;
+            color: #64748b;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .price-tag {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2563eb;
+        }
+
+        .btn-book {
+            width: 100%;
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            margin-top: 15px;
+        }
+
+        .btn-book:hover {
+            background: #1d4ed8;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Banner -->
+    <div class="page-banner">
+        <h1>AC Repair & Service</h1>
+        <p>Expert Technicians • 100% Mess-Free Cleaning • 30-Day Guarantee</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h2 class="section-title">Select Air Conditioner Service</h2>
+
+        <div class="services-grid">
+
+            <!-- Service 1 -->
+            <div class="service-card">
+                <div>
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-snowflake"></i></div>
+                        <div class="card-title">
+                            <h3>Foam & Jet AC Service</h3>
+                        </div>
+                    </div>
+                    <ul class="details-list">
+                        <li><i class="fa-solid fa-check"></i> Deep cleaning with high-pressure jet pump</li>
+                        <li><i class="fa-solid fa-check"></i> Anti-bacterial foam cleaning for coils</li>
+                        <li><i class="fa-solid fa-check"></i> Drain tray and pipe unclogging</li>
+                        <li><i class="fa-solid fa-check"></i> Split and Window ACs supported</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="meta-info">
+                        <span class="time-badge"><i class="fa-regular fa-clock"></i> 45 Mins</span>
+                        <span class="price-tag">₹499</span>
+                    </div>
+                    <button class="btn-book" onclick="bookService('Foam & Jet AC Service', '499', '45 Mins')">Book Now</button>
+                </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="service-card">
+                <div>
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-gears"></i></div>
+                        <div class="card-title">
+                            <h3>AC Inspection & Diagnosis</h3>
+                        </div>
+                    </div>
+                    <ul class="details-list">
+                        <li><i class="fa-solid fa-check"></i> Cooling issue and noise diagnosis</li>
+                        <li><i class="fa-solid fa-check"></i> Water leakage & electrical check</li>
+                        <li><i class="fa-solid fa-check"></i> Upfront price estimate before repair</li>
+                        <li><i class="fa-solid fa-check"></i> Adjusted if service accepted</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="meta-info">
+                        <span class="time-badge"><i class="fa-regular fa-clock"></i> 30 Mins</span>
+                        <span class="price-tag">₹199</span>
+                    </div>
+                    <button class="btn-book" onclick="bookService('AC Inspection & Diagnosis', '199', '30 Mins')">Book Now</button>
+                </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="service-card">
+                <div>
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-wind"></i></div>
+                        <div class="card-title">
+                            <h3>Gas Charging / Top-up</h3>
+                        </div>
+                    </div>
+                    <ul class="details-list">
+                        <li><i class="fa-solid fa-check"></i> Complete gas refill (R32, R410, R22)</li>
+                        <li><i class="fa-solid fa-check"></i> Leakage detection & welding fix</li>
+                        <li><i class="fa-solid fa-check"></i> Vacuuming to ensure proper cooling</li>
+                        <li><i class="fa-solid fa-check"></i> Compressor performance check</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="meta-info">
+                        <span class="time-badge"><i class="fa-regular fa-clock"></i> 60 Mins</span>
+                        <span class="price-tag">₹2,899</span>
+                    </div>
+                    <button class="btn-book" onclick="bookService('AC Gas Refilling', '2299', '60 Mins')">Book Now</button>
+                </div>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="service-card">
+                <div>
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                        <div class="card-title">
+                            <h3> Uninstallation</h3>
+                        </div>
+                    </div>
+                    <ul class="details-list">
+                        <li><i class="fa-solid fa-check"></i> Indoor & outdoor unit mounting</li>
+                        <li><i class="fa-solid fa-check"></i> Copper pipe connection & insulation</li>
+                        <li><i class="fa-solid fa-check"></i> Gas lock during uninstallation</li>
+                        <li><i class="fa-solid fa-check"></i> Final cooling testing</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="meta-info">
+                        <span class="time-badge"><i class="fa-regular fa-clock"></i> 90 Mins</span>
+                        <span class="price-tag">₹499</span>
+                    </div>
+                    <button class="btn-book" onclick="bookService('AC Installation & Setup', '1199', '90 Mins')">Book Now</button>
+                </div>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="service-card">
+                <div>
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-microchip"></i></div>
+                        <div class="card-title">
+                            <h3>PCB / Circuit Repair</h3>
+                        </div>
+                    </div>
+                    <ul class="details-list">
+                        <li><i class="fa-solid fa-check"></i> Inverter & Non-Inverter AC PCB fix</li>
+                        <li><i class="fa-solid fa-check"></i> Display error codes repair</li>
+                        <li><i class="fa-solid fa-check"></i> Sensor & capacitor replacement</li>
+                        <li><i class="fa-solid fa-check"></i> PCB testing & 30-day warranty</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="meta-info">
+                        <span class="time-badge"><i class="fa-regular fa-clock"></i> 60 Mins</span>
+                        <span class="price-tag">₹1,499</span>
+                    </div>
+                    <button class="btn-book" onclick="bookService('AC PCB Circuit Repair', '1499', '60 Mins')">Book Now</button>
+                </div>
+            </div>
+
+            <!-- Service 6 - Checking Only Widget -->
+            <div class="service-card" style="display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center; padding: 20px;">
+                <div>
+                    <div class="card-header" style="flex-direction: column; align-items: center; gap: 10px; margin-bottom: 10px;">
+                        <div class="card-icon" style="margin-right: 0;">
+                            <i class="fa-solid fa-magnifying-glass-wrench"></i>
+                        </div>
+                        <div class="card-title">
+                            <h3>AC Checking Only</h3>
+                        </div>
+                    </div>
+                    <p style="font-size: 13px; color: #64748b; margin-top: 5px; margin-bottom: 15px;">
+                        Technician visit for AC diagnosis & fault inspection
+                    </p>
+                </div>
+                
+                <div style="width: 100%;">
+                    <button class="btn-book" onclick="bookService('AC Checking', '199', '30 Mins')" style="width: 100%;">
+                        <i class="fa-solid fa-clipboard-check"></i> Book Checking Only (₹199)
+                    </button>
+                </div>
+            </div>
+            <!-- Service 5 -->
+            <div class="service-card">
+                <div>
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-microchip"></i></div>
+                        <div class="card-title">
+                            <h3>PCB / Circuit Repair</h3>
+                        </div>
+                    </div>
+                    <ul class="details-list">
+                        <li><i class="fa-solid fa-check"></i> Inverter & Non-Inverter AC PCB fix</li>
+                        <li><i class="fa-solid fa-check"></i> Display error codes repair</li>
+                        <li><i class="fa-solid fa-check"></i> Sensor & capacitor replacement</li>
+                        <li><i class="fa-solid fa-check"></i> PCB testing & 30-day warranty</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="meta-info">
+                        <span class="time-badge"><i class="fa-regular fa-clock"></i> 60 Mins</span>
+                        <span class="price-tag">₹1,499</span>
+                    </div>
+                    <button class="btn-book" onclick="bookService('AC PCB Circuit Repair', '1499', '60 Mins')">Book Now</button>
+                </div>
+            </div>
+            <!-- Service 5 -->
+            <div class="service-card">
+                <div>
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-microchip"></i></div>
+                        <div class="card-title">
+                            <h3>PCB / Circuit Repair</h3>
+                        </div>
+                    </div>
+                    <ul class="details-list">
+                        <li><i class="fa-solid fa-check"></i> Inverter & Non-Inverter AC PCB fix</li>
+                        <li><i class="fa-solid fa-check"></i> Display error codes repair</li>
+                        <li><i class="fa-solid fa-check"></i> Sensor & capacitor replacement</li>
+                        <li><i class="fa-solid fa-check"></i> PCB testing & 30-day warranty</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="meta-info">
+                        <span class="time-badge"><i class="fa-regular fa-clock"></i> 60 Mins</span>
+                        <span class="price-tag">₹1,499</span>
+                    </div>
+                    <button class="btn-book" onclick="bookService('AC PCB Circuit Repair', '1499', '60 Mins')">Book Now</button>
+                </div>
+            </div>
+            <!-- Service 4 -->
+            <div class="service-card">
+                <div>
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                        <div class="card-title">
+                            <h3>Installation </h3>
+                        </div>
+                    </div>
+                    <ul class="details-list">
+                        <li><i class="fa-solid fa-check"></i> Indoor & outdoor unit mounting</li>
+                        <li><i class="fa-solid fa-check"></i> Copper pipe connection & insulation</li>
+                        <li><i class="fa-solid fa-check"></i> Gas Leakage Testing </li>
+                        <li><i class="fa-solid fa-check"></i> Final cooling testing</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="meta-info">
+                        <span class="time-badge"><i class="fa-regular fa-clock"></i> 90 Mins</span>
+                        <span class="price-tag">₹1,199</span>
+                    </div>
+                    <button class="btn-book" onclick="bookService('AC Installation & Setup', '1199', '90 Mins')">Book Now</button>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <!-- Automatic Redirection Script -->
+    <script>
+        function bookService(serviceName, price, duration) {
+            // Service ki details URL Parameters ke dwara booking page par bhej rahe hain
+            const url = `booking.html?service=${encodeURIComponent(serviceName)}&price=${encodeURIComponent(price)}&time=${encodeURIComponent(duration)}`;
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1860 @@
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:#ffffff;
+
+    color:#222;
+
+}
+
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+
+a{
+
+    text-decoration:none;
+
+    color:inherit;
+
+}
+
+
+ul{
+
+    list-style:none;
+
+}
+
+
+.container{
+
+    width:90%;
+
+    max-width:1200px;
+
+    margin:auto;
+
+}
+
+
+
+/* ==========================
+HEADER
+========================== */
+
+
+.header{
+
+    width:100%;
+
+    background:#fff;
+
+    padding:15px 0;
+
+    border-bottom:1px solid #eee;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+}
+
+
+
+.header .container{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+}
+
+
+
+
+.logo a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:#0066ff;
+
+}
+
+
+
+.logo img{
+
+    width:45px;
+
+    height:45px;
+
+    object-fit:contain;
+
+}
+
+
+
+
+
+.location-box{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+
+
+.location-box i{
+
+    font-size:22px;
+
+    color:#0066ff;
+
+}
+
+
+.location-box h5{
+
+    font-size:13px;
+
+}
+
+
+.location-box p{
+
+    font-size:12px;
+
+    color:#777;
+
+}
+
+
+
+
+/* SEARCH BOX */
+
+
+.search-box{
+
+    flex:1;
+
+    max-width:400px;
+
+    background:#f5f7fb;
+
+    border-radius:10px;
+
+    display:flex;
+
+    align-items:center;
+
+    padding:12px 15px;
+
+    gap:10px;
+
+}
+
+
+
+.search-box i{
+
+    color:#0066ff;
+
+}
+
+
+
+.search-box input{
+
+    width:100%;
+
+    border:none;
+
+    outline:none;
+
+    background:none;
+
+    font-size:14px;
+
+}
+
+
+
+
+
+/* HEADER BUTTONS */
+
+
+.header-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+
+
+.icon-btn{
+
+    width:40px;
+
+    height:40px;
+
+    border-radius:50%;
+
+    border:none;
+
+    background:#f1f5ff;
+
+    color:#0066ff;
+
+    cursor:pointer;
+
+}
+
+
+
+.login-btn{
+
+    padding:12px 20px;
+
+    border:none;
+
+    background:#0066ff;
+
+    color:#fff;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+}
+
+
+
+
+/* ==========================
+NAVBAR
+========================== */
+
+
+.navbar{
+
+    background:#0066ff;
+
+    padding:14px 0;
+
+}
+
+
+
+.navbar ul{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:35px;
+
+}
+
+
+
+.navbar a{
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:500;
+
+}
+
+
+
+.navbar a:hover{
+
+    opacity:.8;
+
+}
+
+
+
+
+
+
+/* ==========================
+HERO SECTION
+========================== */
+
+
+.hero{
+
+    padding:70px 0;
+
+    background:
+
+    linear-gradient(120deg,#f3f8ff,#ffffff);
+
+}
+
+
+
+.hero-container{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:50px;
+
+}
+
+
+
+.hero-left{
+
+    width:55%;
+
+}
+
+
+
+.hero-tag{
+
+    display:inline-block;
+
+    background:#e8f1ff;
+
+    color:#0066ff;
+
+    padding:8px 15px;
+
+    border-radius:30px;
+
+    font-size:14px;
+
+}
+
+
+
+.hero h1{
+
+    font-size:55px;
+
+    line-height:1.2;
+
+    margin:20px 0;
+
+    font-weight:800;
+
+}
+
+
+
+.hero h1 span{
+
+    color:#0066ff;
+
+}
+
+
+
+.hero p{
+
+    font-size:17px;
+
+    color:#666;
+
+    line-height:1.7;
+
+}
+
+
+
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:20px;
+
+    margin-top:30px;
+
+}
+
+
+
+.btn-primary{
+
+    background:#0066ff;
+
+    color:white;
+
+    padding:14px 30px;
+
+    border-radius:8px;
+
+    font-weight:600;
+
+}
+
+
+
+.btn-secondary{
+
+    border:2px solid #0066ff;
+
+    color:#0066ff;
+
+    padding:12px 30px;
+
+    border-radius:8px;
+
+    font-weight:600;
+
+}
+
+
+
+
+/* HERO FEATURES */
+
+
+.hero-features{
+
+    display:flex;
+
+    gap:20px;
+
+    margin-top:40px;
+
+}
+
+
+
+.feature{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    font-size:14px;
+
+}
+
+
+
+.feature i{
+
+    color:#0066ff;
+
+}
+
+ /* ==========================================
+   CSS PART 2
+   TRUSTED BRANDS + SERVICES + MOST BOOKED
+========================================== */
+
+
+/* ==========================
+TRUSTED BRANDS SECTION
+========================== */
+
+
+.brands-section{
+
+    padding:60px 0;
+
+    background:#fff;
+
+}
+
+
+
+.section-title{
+
+    text-align:center;
+
+    margin-bottom:40px;
+
+}
+
+
+
+.section-title span{
+
+    color:#0066ff;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+
+
+.section-title h2{
+
+    font-size:36px;
+
+    margin:10px 0;
+
+    font-weight:700;
+
+}
+
+
+
+.section-title p{
+
+    color:#777;
+
+    font-size:15px;
+
+}
+
+
+
+
+
+.brands-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(7,1fr);
+
+    gap:20px;
+
+}
+
+
+
+
+.brand-card{
+
+    background:#fff;
+
+    border:1px solid #eee;
+
+    border-radius:15px;
+
+    padding:20px;
+
+    text-align:center;
+
+    transition:.3s;
+
+}
+
+
+
+.brand-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+
+
+.brand-card img{
+
+    width:80px;
+
+    height:50px;
+
+    object-fit:contain;
+
+}
+
+
+
+
+/* ==========================
+SERVICES SECTION
+========================== */
+
+
+.services-section{
+
+    padding:70px 0;
+
+    background:#f8fbff;
+
+}
+
+
+
+.services-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(5,1fr);
+
+    gap:25px;
+
+}
+
+
+
+
+.service-card{
+
+    background:#fff;
+
+    padding:25px 15px;
+
+    border-radius:18px;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    border:1px solid #eee;
+
+}
+
+
+
+.service-card:hover{
+
+    background:#0066ff;
+
+    color:white;
+
+    transform:translateY(-8px);
+
+}
+
+
+
+.service-card i{
+
+    font-size:35px;
+
+    color:#0066ff;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.service-card:hover i{
+
+    color:white;
+
+}
+
+
+
+.service-card h3{
+
+    font-size:16px;
+
+    margin-bottom:8px;
+
+}
+
+
+
+.service-card p{
+
+    font-size:13px;
+
+    color:#777;
+
+}
+
+
+
+.service-card:hover p{
+
+    color:white;
+
+}
+
+
+
+
+
+
+
+/* ==========================
+MOST BOOKED SERVICES
+========================== */
+
+
+.booked-section{
+
+    padding:70px 0;
+
+    background:white;
+
+}
+
+
+
+
+.booked-slider{
+
+    display:flex;
+
+    gap:25px;
+
+    overflow-x:auto;
+
+    scroll-behavior:smooth;
+
+}
+
+
+
+.booked-slider::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+
+
+
+.booked-card{
+
+    min-width:260px;
+
+    background:#fff;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    border:1px solid #eee;
+
+    transition:.3s;
+
+}
+
+
+
+.booked-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+
+}
+
+
+
+
+
+.booked-card img{
+
+    width:100%;
+
+    height:170px;
+
+    object-fit:cover;
+
+}
+
+
+
+
+
+.booked-content{
+
+    padding:20px;
+
+}
+
+
+
+.booked-content h3{
+
+    font-size:18px;
+
+    margin-bottom:10px;
+
+}
+
+
+
+.rating{
+
+    color:#ffb400;
+
+    font-size:14px;
+
+    margin-bottom:10px;
+
+}
+
+
+
+
+.price{
+
+    font-size:20px;
+
+    color:#0066ff;
+
+    font-weight:700;
+
+}
+
+
+
+.price del{
+
+    color:#999;
+
+    font-size:14px;
+
+    margin-left:8px;
+
+}
+
+
+
+
+.book-btn{
+
+    display:block;
+
+    margin-top:15px;
+
+    background:#0066ff;
+
+    color:white;
+
+    padding:12px;
+
+    text-align:center;
+
+    border-radius:8px;
+
+    font-weight:600;
+
+}
+
+
+
+
+/* ==========================
+SERVICE BADGE
+========================== */
+
+
+.discount-badge{
+
+    position:absolute;
+
+    top:15px;
+
+    left:15px;
+
+    background:#ff4757;
+
+    color:white;
+
+    padding:5px 12px;
+
+    border-radius:20px;
+
+    font-size:12px;
+
+}
+/* ==========================================
+   CSS PART 3
+   MEMBERSHIP + OFFERS + REVIEWS
+========================================== */
+
+
+/* ==========================
+MEMBERSHIP SECTION
+========================== */
+
+
+.membership-section{
+
+    padding:80px 0;
+
+    background:#f6f9ff;
+
+}
+
+
+
+.membership-card{
+
+    background:linear-gradient(135deg,#0066ff,#0047b3);
+
+    border-radius:25px;
+
+    padding:40px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    color:white;
+
+    gap:30px;
+
+}
+
+
+
+.membership-content{
+
+    width:65%;
+
+}
+
+
+
+.membership-icon{
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:50%;
+
+    background:white;
+
+    color:#0066ff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:28px;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.membership-content h3{
+
+    font-size:32px;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.membership-content p{
+
+    line-height:1.6;
+
+    opacity:.9;
+
+}
+
+
+
+.membership-content ul{
+
+    margin-top:25px;
+
+}
+
+
+
+.membership-content li{
+
+    margin:12px 0;
+
+    font-size:15px;
+
+}
+
+
+
+.membership-content li i{
+
+    margin-right:10px;
+
+}
+
+
+
+.membership-btn{
+
+    margin-top:25px;
+
+    padding:14px 30px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:white;
+
+    color:#0066ff;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+}
+
+
+
+
+
+.membership-price{
+
+    background:white;
+
+    color:#222;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+}
+
+
+
+.membership-price h4{
+
+    color:#777;
+
+}
+
+
+
+.membership-price h2{
+
+    font-size:40px;
+
+    color:#0066ff;
+
+}
+
+
+
+.membership-price span{
+
+    font-size:15px;
+
+    color:#777;
+
+}
+
+
+
+.save-badge{
+
+    background:#e8f1ff;
+
+    color:#0066ff;
+
+    padding:8px 15px;
+
+    border-radius:20px;
+
+    margin-top:15px;
+
+}
+
+
+
+
+
+
+
+/* ==========================
+OFFERS SECTION
+========================== */
+
+
+.offers-section{
+
+    padding:80px 0;
+
+    background:white;
+
+}
+
+
+
+
+.offer-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:30px;
+
+}
+
+
+
+
+.offer-card{
+
+    background:white;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    border:1px solid #eee;
+
+    transition:.3s;
+
+}
+
+
+
+.offer-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.1);
+
+}
+
+
+
+.offer-image img{
+
+    width:100%;
+
+    height:200px;
+
+    object-fit:cover;
+
+}
+
+
+
+
+.offer-content{
+
+    padding:25px;
+
+}
+
+
+
+.offer-content h3{
+
+    font-size:22px;
+
+    margin-bottom:10px;
+
+}
+
+
+
+.offer-content p{
+
+    color:#777;
+
+    font-size:14px;
+
+}
+
+
+
+
+.offer-price{
+
+    font-size:28px;
+
+    color:#0066ff;
+
+    font-weight:700;
+
+    margin:15px 0;
+
+}
+
+
+
+.offer-price del{
+
+    font-size:15px;
+
+    color:#999;
+
+}
+
+
+
+.offer-content button{
+
+    width:100%;
+
+    padding:12px;
+
+    border:none;
+
+    background:#0066ff;
+
+    color:white;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+}
+
+
+
+
+
+
+
+/* ==========================
+REVIEWS SECTION
+========================== */
+
+
+.reviews-section{
+
+    padding:80px 0;
+
+    background:#f8fbff;
+
+}
+
+
+
+
+.reviews-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:30px;
+
+}
+
+
+
+
+.review-card{
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:20px;
+
+    border:1px solid #eee;
+
+    transition:.3s;
+
+}
+
+
+
+.review-card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+
+
+
+.customer-info{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.customer-info img{
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+}
+
+
+
+.customer-info h4{
+
+    font-size:17px;
+
+}
+
+
+
+.stars{
+
+    color:#ffb400;
+
+    font-size:14px;
+
+}
+
+
+
+
+.review-card p{
+
+    color:#666;
+
+    line-height:1.7;
+
+    font-size:15px;
+
+}
+
+
+/* ==========================================
+   CSS PART 4
+   FOOTER + WHATSAPP + RESPONSIVE
+========================================== */
+
+
+/* ==========================
+FOOTER
+========================== */
+
+
+.footer{
+
+    background:#111827;
+
+    color:white;
+
+    padding:70px 0 0;
+
+}
+
+
+
+.footer-container{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr 1fr 1.5fr;
+
+    gap:40px;
+
+}
+
+
+
+.footer-box h3{
+
+    font-size:22px;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.footer-box p{
+
+    color:#cbd5e1;
+
+    line-height:1.7;
+
+    font-size:14px;
+
+}
+
+
+
+.footer-box ul li{
+
+    color:#cbd5e1;
+
+    margin:12px 0;
+
+    font-size:14px;
+
+    cursor:pointer;
+
+}
+
+
+
+.footer-box ul li:hover{
+
+    color:white;
+
+}
+
+
+
+
+
+.social-icons{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-top:20px;
+
+}
+
+
+
+.social-icons a{
+
+    width:40px;
+
+    height:40px;
+
+    background:#0066ff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    color:white;
+
+    font-size:18px;
+
+}
+
+
+
+
+
+.footer-bottom{
+
+    margin-top:50px;
+
+    padding:20px;
+
+    text-align:center;
+
+    border-top:1px solid rgba(255,255,255,.1);
+
+}
+
+
+
+.footer-bottom p{
+
+    color:#94a3b8;
+
+    font-size:14px;
+
+}
+
+
+
+
+
+/* ==========================
+WHATSAPP FLOAT BUTTON
+========================== */
+
+
+.whatsapp-btn{
+
+    position:fixed;
+
+    right:25px;
+
+    bottom:25px;
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:50%;
+
+    background:#25D366;
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:32px;
+
+    z-index:999;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
+
+}
+
+
+
+
+
+/* ==========================
+TABLET RESPONSIVE
+========================== */
+
+
+@media(max-width:992px){
+
+
+.header .container{
+
+    flex-wrap:wrap;
+
+}
+
+
+
+.search-box{
+
+    order:3;
+
+    width:100%;
+
+}
+
+
+
+.hero-container{
+
+    flex-direction:column;
+
+}
+
+
+
+.hero-left,
+.hero-right{
+
+    width:100%;
+
+}
+
+
+
+.hero h1{
+
+    font-size:42px;
+
+}
+
+
+
+.brands-grid{
+
+    grid-template-columns:repeat(4,1fr);
+
+}
+
+
+
+.services-grid{
+
+    grid-template-columns:repeat(3,1fr);
+
+}
+
+
+
+.offer-grid{
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+
+
+.reviews-grid{
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+
+
+.footer-container{
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+
+
+.membership-card{
+
+    flex-direction:column;
+
+}
+
+
+
+.membership-content{
+
+    width:100%;
+
+}
+
+
+}
+
+
+
+
+
+
+
+/* ==========================
+MOBILE RESPONSIVE
+========================== */
+
+
+@media(max-width:600px){
+
+
+
+.logo span{
+
+    font-size:18px;
+
+}
+
+
+
+.location-box{
+
+    display:none;
+
+}
+
+
+
+.header-right .icon-btn{
+
+    display:none;
+
+}
+
+
+
+.navbar ul{
+
+    gap:15px;
+
+    overflow-x:auto;
+
+    justify-content:flex-start;
+
+}
+
+
+
+.navbar a{
+
+    font-size:13px;
+
+}
+
+
+
+.hero{
+
+    padding:40px 0;
+
+}
+
+
+
+.hero h1{
+
+    font-size:34px;
+
+}
+
+
+
+.hero p{
+
+    font-size:14px;
+
+}
+
+
+
+.hero-buttons{
+
+    flex-direction:column;
+
+}
+
+
+
+.hero-features{
+
+    flex-direction:column;
+
+}
+
+
+
+.booking-card{
+
+    width:100%;
+
+}
+
+
+
+.section-title h2{
+
+    font-size:28px;
+
+}
+
+
+
+.brands-grid{
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+
+
+.services-grid{
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+
+
+.booked-card{
+
+    min-width:230px;
+
+}
+
+
+
+.membership-content h3{
+
+    font-size:25px;
+
+}
+
+
+
+.offer-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+
+
+.reviews-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+
+
+.footer-container{
+
+    grid-template-columns:1fr;
+
+}
+
+
+
+.footer{
+
+    text-align:left;
+
+}
+
+
+
+.whatsapp-btn{
+
+    width:55px;
+
+    height:55px;
+
+    font-size:28px;
+
+}
+

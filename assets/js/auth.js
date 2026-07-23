@@ -1,0 +1,5 @@
+registerUser()
+
+loginUser()
+
+logoutUser()

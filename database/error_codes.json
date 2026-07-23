@@ -1,0 +1,47 @@
+{
+  "LG": {
+    "CH01": "Indoor Room Temperature Sensor Error",
+    "CH02": "Indoor Pipe Sensor Error",
+    "CH05": "Communication Error Between Indoor & Outdoor Unit",
+    "CH10": "Indoor Fan Motor Error",
+    "CH21": "DC Peak Current Error",
+    "CH22": "Compressor Over Current Error",
+    "CH38": "Low Refrigerant Detection"
+  },
+
+  "Daikin": {
+    "U0": "Low Refrigerant",
+    "U2": "Power Supply Voltage Error",
+    "U4": "Indoor & Outdoor Communication Failure",
+    "A1": "Indoor PCB Fault",
+    "A5": "Freeze Protection Activated",
+    "C4": "Liquid Pipe Sensor Fault"
+  },
+
+  "Voltas": {
+    "E1": "Indoor Room Sensor Fault",
+    "E2": "Indoor Coil Sensor Fault",
+    "E5": "Outdoor Temperature Sensor Fault",
+    "E6": "Communication Error",
+    "F1": "Indoor EEPROM Fault",
+    "F3": "Outdoor EEPROM Fault"
+  },
+
+  "Blue Star": {
+    "E1": "Room Temperature Sensor Error",
+    "E2": "Evaporator Sensor Error",
+    "E4": "Compressor Discharge Temperature Protection",
+    "E5": "Over Current Protection",
+    "F1": "Indoor Fan Motor Error",
+    "F6": "Communication Fault"
+  },
+
+  "Hitachi": {
+    "01": "Indoor Protection Device Activated",
+    "03": "Communication Error",
+    "05": "Indoor Fan Motor Fault",
+    "13": "Outdoor Compressor Overload",
+    "35": "Low Pressure Protection",
+    "43": "Outdoor Unit Sensor Error"
+  }
+}

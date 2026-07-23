@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Account - Cryovix Fixify</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div style="max-width: 600px; margin: 50px auto; padding: 20px;">
+    <h2>Customer Profile</h2>
+    <div id="userInfo" style="background: #f8fafc; padding: 15px; border-radius: 8px;">
+        <p><strong>Email:</strong> <span id="userEmail">Loading...</span></p>
+        <p><strong>User ID:</strong> <span id="userId">Loading...</span></p>
+    </div>
+    <button id="logoutBtn" style="margin-top: 15px; padding: 8px 16px; background: #ef4444; color: white; border: none; border-radius: 6px; cursor: pointer;">Logout</button>
+</div>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+  const firebaseConfig = { /* Same Config Here */ };
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  // User Session Check
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      document.getElementById('userEmail').innerText = user.email;
+      document.getElementById('userId').innerText = user.uid;
+    } else {
+      window.location.href = "login.html"; // Login par bhej do agar logged in nahi hai
+    }
+  });
+
+  // Logout Function
+  document.getElementById('logoutBtn').addEventListener('click', () => {
+    signOut(auth).then(() => {
+      window.location.href = "login.html";
+    });
+  });
+</script>
+</body>
+</html>

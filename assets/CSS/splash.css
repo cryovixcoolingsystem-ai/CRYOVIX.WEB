@@ -1,0 +1,217 @@
+/* ===========================
+   CRYOVIX FIXIFY SPLASH SCREEN
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:'Segoe UI',sans-serif;
+    background:
+    radial-gradient(circle at top left,#00f5ff33,transparent 40%),
+    radial-gradient(circle at bottom right,#00ff8830,transparent 40%),
+    #050b16;
+}
+
+/* Background Glow */
+body::before{
+    content:'';
+    position:absolute;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    background:#00e5ff;
+    filter:blur(180px);
+    opacity:.15;
+    animation:pulseGlow 4s ease-in-out infinite;
+}
+
+.splash-container{
+    text-align:center;
+    z-index:2;
+    position:relative;
+}
+
+/* Logo Container */
+.logo-box{
+    position:relative;
+    width:220px;
+    height:220px;
+    margin:auto;
+}
+
+/* Liquid Rings */
+.liquid-ring,
+.liquid-ring::before,
+.liquid-ring::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    border-radius:42%;
+}
+
+.liquid-ring{
+    background:linear-gradient(
+        45deg,
+        #00f5ff,
+        #0084ff,
+        #00ffcc
+    );
+    animation:liquidRotate 8s linear infinite;
+    filter:drop-shadow(0 0 25px #00f5ff);
+}
+
+.liquid-ring::before{
+    background:rgba(0,0,0,0.25);
+    inset:8px;
+}
+
+.liquid-ring::after{
+    background:#07111f;
+    inset:15px;
+}
+
+.ring2{
+    transform:scale(.8);
+    animation-direction:reverse;
+    animation-duration:6s;
+    opacity:.7;
+}
+
+/* Logo Text */
+.logo-text{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    z-index:5;
+}
+
+.logo-text h1{
+    color:#ffffff;
+    font-size:2rem;
+    font-weight:700;
+    letter-spacing:1px;
+}
+
+.logo-text span{
+    color:#00f5ff;
+    font-size:1.2rem;
+    font-weight:600;
+}
+
+/* Tagline */
+.tagline{
+    margin-top:35px;
+    color:#d7e6ff;
+    font-size:1rem;
+    letter-spacing:1px;
+}
+
+/* Loader */
+.loader-container{
+    width:280px;
+    height:12px;
+    margin:35px auto 15px;
+    background:rgba(255,255,255,.08);
+    border-radius:30px;
+    overflow:hidden;
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.loader-liquid{
+    width:40%;
+    height:100%;
+    border-radius:30px;
+    background:
+    linear-gradient(
+    90deg,
+    #00f5ff,
+    #00ffcc,
+    #00a2ff
+    );
+    box-shadow:
+    0 0 20px #00f5ff,
+    0 0 40px #00f5ff;
+    animation:liquidLoad 2s ease-in-out infinite;
+}
+
+/* Loading Text */
+.loading-text{
+    color:#8bb6ff;
+    font-size:.95rem;
+    letter-spacing:2px;
+    animation:blink 1.5s infinite;
+}
+
+/* Animations */
+
+@keyframes liquidRotate{
+    0%{
+        transform:rotate(0deg);
+    }
+    100%{
+        transform:rotate(360deg);
+    }
+}
+
+@keyframes liquidLoad{
+    0%{
+        transform:translateX(-100%);
+    }
+
+    50%{
+        transform:translateX(180%);
+    }
+
+    100%{
+        transform:translateX(-100%);
+    }
+}
+
+@keyframes blink{
+    0%,100%{
+        opacity:1;
+    }
+    50%{
+        opacity:.4;
+    }
+}
+
+@keyframes pulseGlow{
+    0%,100%{
+        transform:scale(1);
+        opacity:.15;
+    }
+    50%{
+        transform:scale(1.2);
+        opacity:.25;
+    }
+}
+
+/* Mobile */
+@media(max-width:768px){
+
+    .logo-box{
+        width:180px;
+        height:180px;
+    }
+
+    .logo-text h1{
+        font-size:1.7rem;
+    }
+
+    .loader-container{
+        width:220px;
+    }
+}
