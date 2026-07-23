@@ -1,6 +1,6 @@
 {
   "projects": {
-    "default": "cryovix-fixify-8869f",
+    "default": "cryovix-fixify-9568",
     "cryovixcoolingsystem-ai/CRYOVIX.WEB": "cryovix-fixify-9568"
   },
   "targets": {},

@@ -31,10 +31,11 @@
         .service-summary-card .service-title { font-weight: 700; font-size: 16px; color: #166534; display: flex; align-items: center; gap: 8px; }
         .service-meta-box { display: flex; justify-content: space-between; background: #ffffff; padding: 10px 14px; border-radius: 8px; border: 1px solid #dcfce7; }
         .meta-item { display: flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: #0f172a; }
-        #map { height: 220px; width: 100%; border-radius: 8px; border: 1px solid var(--border); margin-top: 8px; }
-        .location-btn { background: #10b981; color: white; border: none; padding: 8px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+        #map { height: 200px; width: 100%; border-radius: 8px; border: 1px solid var(--border); margin-top: 8px; }
+        .location-btn { background: #10b981; color: white; border: none; padding: 10px 14px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
         .btn-submit { width: 100%; background: var(--primary); color: white; padding: 14px; border: none; border-radius: 8px; font-weight: 700; font-size: 15px; cursor: pointer; transition: background 0.3s ease; margin-top: 10px; }
         .btn-submit:hover { background: var(--primary-dark); }
+        .btn-submit:disabled { background: #94a3b8; cursor: not-allowed; }
         .success-message { display: none; text-align: center; background: #d1fae5; color: #065f46; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-weight: 600; }
     </style>
 </head>
@@ -43,15 +44,15 @@
     <div class="booking-container">
         <div class="booking-header">
             <h2><i class="fa-solid fa-calendar-check" style="color: var(--primary);"></i> Complete Your Booking</h2>
-            <p style="font-size: 13px; color: var(--text-muted);">Enter details & select your location for technician tracking</p>
+            <p style="font-size: 13px; color: var(--text-muted);">Enter details & select your location</p>
         </div>
 
         <div id="successMsg" class="success-message">
-            <i class="fa-solid fa-circle-check"></i> Booking successfully confirmed! Redirecting...
+            <i class="fa-solid fa-circle-check"></i> Booking confirmed! Thank you.
         </div>
 
-        <form id="bookingForm">
-            <!-- Service Summary Card (Auto-filled from URL params) -->
+        <!-- action="javascript:void(0);" prevents default browser page reload -->
+        <form id="bookingForm" action="javascript:void(0);">
             <div class="service-summary-card">
                 <div class="service-title">
                     <i class="fa-solid fa-screwdriver-wrench"></i> <span id="displayService">General Service</span>
@@ -68,7 +69,7 @@
                     <input type="text" id="custName" placeholder="Enter your name" required>
                 </div>
                 <div class="form-group">
-                    <label>Phone Number (WhatsApp)</label>
+                    <label>Phone Number</label>
                     <input type="tel" id="custPhone" placeholder="10-digit mobile number" pattern="[0-9]{10}" required>
                 </div>
             </div>
@@ -90,7 +91,7 @@
             </div>
 
             <div class="form-group">
-                <label>Complete Address & Landmark</label>
+                <label>Complete Address</label>
                 <textarea id="custAddress" rows="2" placeholder="House No, Building, Street Name" required></textarea>
             </div>
 
@@ -100,38 +101,40 @@
             </div>
 
             <div class="form-group">
-                <label>Live GPS Location (For Technician)</label>
-                <button type="button" class="location-btn" onclick="getLiveLocation()"><i class="fa-solid fa-location-crosshairs"></i> Detect My Live GPS</button>
-                <input type="hidden" id="googleMapLink" value="">
-                <div id="map"></div>
+                <label>Live Location Link (Optional)</label>
+                <button type="button" class="location-btn" id="geoBtn"><i class="fa-solid fa-location-crosshairs"></i> Detect My Live GPS</button>
+                <input type="hidden" id="googleMapLink" value="Not Shared">
             </div>
 
             <button type="submit" class="btn-submit" id="submitBtn">Confirm & Book Now</button>
         </form>
     </div>
 
-    <!-- Leaflet JS -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Firebase App & Firestore Compatibility SDKs (Non-module for max stability) -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 
-    <!-- Firebase SDK & Booking Script -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
+    <script>
+        // 1. Firebase Configuration
         const firebaseConfig = {
             apiKey: "AIzaSyDFxFdt_0hEzJnR3Ze-GfX_1uCzW_lgfnE",
             authDomain: "cryovix-fixify.firebaseapp.com",
             projectId: "cryovix-fixify",
             storageBucket: "cryovix-fixify.firebasestorage.app",
             messagingSenderId: "871696054329",
-            appId: "1:871696054329:web:4291aa97259ac0616875e8",
-            measurementId: "G-FRX2EKB0NL"
+            appId: "1:871696054329:web:4291aa97259ac0616875e8"
         };
 
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
+        // Initialize Firebase
+        let db;
+        try {
+            firebase.initializeApp(firebaseConfig);
+            db = firebase.firestore();
+        } catch (e) {
+            console.error("Firebase init error:", e);
+        }
 
-        // Parse URL Parameters (Service & Price)
+        // 2. Extract Query Parameters
         const urlParams = new URLSearchParams(window.location.search);
         const serviceName = urlParams.get('service') || 'General Home Service';
         const servicePrice = urlParams.get('price') || urlParams.get('offer') || '₹499';
@@ -140,124 +143,73 @@
         document.getElementById('displayPrice').innerText = servicePrice.startsWith('₹') ? servicePrice : '₹' + servicePrice;
         document.getElementById('displayOffer').innerText = urlParams.get('offer') ? 'Offer Applied' : 'Standard Rate';
 
-        // Map Initialization
-        let map = L.map('map').setView([19.0760, 72.8777], 13); // Default Mumbai
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }).addToForMap = map;
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-        let marker = L.marker([19.0760, 72.8777]).addTo(map);
-
-        window.getLiveLocation = function() {
+        // 3. Handle GPS Location
+        document.getElementById('geoBtn').addEventListener('click', function() {
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition((position) => {
+                navigator.geolocation.getCurrentPosition(function(position) {
                     const lat = position.coords.latitude;
                     const lng = position.coords.longitude;
-                    map.setView([lat, lng], 16);
-                    marker.setLatLng([lat, lng]);
-                    const mapLink = `https://maps.google.com/?q=${lat},${lng}`;
-                    document.getElementById('googleMapLink').value = mapLink;
-                    alert("📍 Live location successfully captured!");
-                }, () => {
-                    alert("Location access denied. Please type address manually.");
+                    document.getElementById('googleMapLink').value = `https://maps.google.com/?q=${lat},${lng}`;
+                    alert("📍 GPS Location captured successfully!");
+                }, function() {
+                    alert("Could not detect location. Please fill address manually.");
                 });
+            } else {
+                alert("Geolocation is not supported by your browser.");
             }
-        }
+        });
 
-        // Form Submit Handler
-        document.getElementById('bookingForm').addEventListener('submit', async (e) => {
+        // 4. Form Submit Logic (Guaranteed No Automatic Page Redirect)
+        document.getElementById('bookingForm').addEventListener('submit', async function(e) {
             e.preventDefault();
+
             const submitBtn = document.getElementById('submitBtn');
-            submitBtn.innerText = "Processing Booking...";
+            submitBtn.innerText = "Saving Booking...";
             submitBtn.disabled = true;
 
             const bookingData = {
-                name: document.getElementById('custName').value,
-                phone: document.getElementById('custPhone').value,
+                name: document.getElementById('custName').value.trim(),
+                phone: document.getElementById('custPhone').value.trim(),
                 service: serviceName,
                 price: document.getElementById('displayPrice').innerText,
                 date: document.getElementById('custDate').value,
                 timeSlot: document.getElementById('custSlot').value,
-                address: document.getElementById('custAddress').value,
-                city: document.getElementById('custCity').value,
-                googleMapLink: document.getElementById('googleMapLink').value || 'Not Shared',
+                address: document.getElementById('custAddress').value.trim(),
+                city: document.getElementById('custCity').value.trim(),
+                googleMapLink: document.getElementById('googleMapLink').value,
                 timestamp: new Date().toISOString()
             };
 
             try {
-                // Save to Firestore 'customers' collection
-                await addDoc(collection(db, "customers"), bookingData);
-                
+                // Step A: Save to Firestore
+                if (db) {
+                    await db.collection("customers").add(bookingData);
+                } else {
+                    throw new Error("Firebase SDK failed to load.");
+                }
+
+                // Step B: Send Telegram Alert
+                const botToken = "8817937034:AAGI-_31FYe3frL_N5qINHK2eGEpeQrJIJk"; 
+                const chatId = "8528476017";
+                const telegramMsg = encodeURIComponent(
+                    `🚨 NEW BOOKING ALERT\n\nName: ${bookingData.name}\nPhone: ${bookingData.phone}\nService: ${bookingData.service}\nPrice: ${bookingData.price}\nDate: ${bookingData.date}`
+                );
+
+                fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${telegramMsg}`, { mode: 'no-cors' })
+                    .catch(err => console.warn("Telegram failed:", err));
+
+                // Step C: Display Success Message
                 document.getElementById('successMsg').style.display = 'block';
-                document.getElementById('bookingForm').reset();
-                
-                setTimeout(() => {
-                    window.location.href = "index.html"; // Redirect back to home
-                }, 2000);
-            } catch (error) {
-                console.error("Error adding document: ", error);
-                alert("Booking failed! Please check console.");
+                submitBtn.innerText = "Booking Confirmed ✓";
+                alert("🎉 Success! Your booking has been saved.");
+
+            } catch (err) {
+                console.error("Booking error:", err);
+                alert("⚠️ Booking Error: " + err.message + "\nPlease check Firestore database rules in Firebase Console.");
                 submitBtn.innerText = "Confirm & Book Now";
                 submitBtn.disabled = false;
             }
         });
-
-        // Form Submit Handler
-document.getElementById('bookingForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const submitBtn = document.getElementById('submitBtn');
-    submitBtn.innerText = "Processing Booking...";
-    submitBtn.disabled = true;
-
-    const bookingData = {
-        name: document.getElementById('custName').value,
-        phone: document.getElementById('custPhone').value,
-        service: serviceName,
-        price: document.getElementById('displayPrice').innerText,
-        date: document.getElementById('custDate').value,
-        timeSlot: document.getElementById('custSlot').value,
-        address: document.getElementById('custAddress').value,
-        city: document.getElementById('custCity').value,
-        googleMapLink: document.getElementById('googleMapLink').value || 'Not Shared',
-        timestamp: new Date().toISOString()
-    };
-
-    try {
-        // 1. Save booking to Firestore Database
-        await addDoc(collection(db, "customers"), bookingData);
-
-        // 2. Telegram Bot Configuration (Credentials Configured)
-        const botToken = "8817937034:AAGI-_31FYe3frL_N5qINHK2eGEpeQrJIJk"; 
-        const chatId = "8528476017";
-
-        const telegramMessage = encodeURIComponent(
-            `🚨 *NEW BOOKING ALERT - Cryovix Fixify*\n\n` +
-            `👤 *Customer:* ${bookingData.name}\n` +
-            `📞 *Phone:* ${bookingData.phone}\n` +
-            `🔧 *Service:* ${bookingData.service}\n` +
-            `💰 *Price:* ${bookingData.price}\n` +
-            `📅 *Date:* ${bookingData.date} (${bookingData.timeSlot})\n` +
-            `📍 *Address:* ${bookingData.address}, ${bookingData.city}\n` +
-            `🗺️ *Map Location:* ${bookingData.googleMapLink}`
-        );
-
-        // Send Telegram Notification
-        const telegramUrl = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${telegramMessage}&parse_mode=Markdown`;
-        await fetch(telegramUrl);
-
-        // Show Success
-        document.getElementById('successMsg').style.display = 'block';
-        document.getElementById('bookingForm').reset();
-        
-        setTimeout(() => {
-            window.location.href = "index.html";
-        }, 2000);
-
-    } catch (error) {
-        console.error("Error saving booking:", error);
-        alert("Booking failed! Please check console.");
-        submitBtn.innerText = "Confirm & Book Now";
-        submitBtn.disabled = false;
-    }
-});
     </script>
 </body>
 </html>
