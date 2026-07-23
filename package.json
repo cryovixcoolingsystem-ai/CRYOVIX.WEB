@@ -1,0 +1,21 @@
+{
+  "name": "cryovix-fixify-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cryovixcoolingsystem-ai/CRYOVIX.WEB.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/cryovixcoolingsystem-ai/CRYOVIX.WEB/issues"
+  },
+  "homepage": "https://github.com/cryovixcoolingsystem-ai/CRYOVIX.WEB#readme"
+}
