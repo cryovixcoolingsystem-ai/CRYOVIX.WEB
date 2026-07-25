@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/cryovixcoolingsystem-ai/CRYOVIX.WEB/issues"
   },
-  "homepage": "https://github.com/cryovixcoolingsystem-ai/CRYOVIX.WEB#readme"
+  "homepage": "https://github.com/cryovixcoolingsystem-ai/CRYOVIX.WEB#readme",
+  "devDependencies": {
+    "react-scripts": "^5.0.1"
+  }
 }
