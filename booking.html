@@ -6,7 +6,6 @@
     <title>Book Service - Cryovix Fixify</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
     <style>
         :root {
@@ -31,28 +30,32 @@
         .service-summary-card .service-title { font-weight: 700; font-size: 16px; color: #166534; display: flex; align-items: center; gap: 8px; }
         .service-meta-box { display: flex; justify-content: space-between; background: #ffffff; padding: 10px 14px; border-radius: 8px; border: 1px solid #dcfce7; }
         .meta-item { display: flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: #0f172a; }
-        #map { height: 200px; width: 100%; border-radius: 8px; border: 1px solid var(--border); margin-top: 8px; }
         .location-btn { background: #10b981; color: white; border: none; padding: 10px 14px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
         .btn-submit { width: 100%; background: var(--primary); color: white; padding: 14px; border: none; border-radius: 8px; font-weight: 700; font-size: 15px; cursor: pointer; transition: background 0.3s ease; margin-top: 10px; }
         .btn-submit:hover { background: var(--primary-dark); }
         .btn-submit:disabled { background: #94a3b8; cursor: not-allowed; }
-        .success-message { display: none; text-align: center; background: #d1fae5; color: #065f46; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-weight: 600; }
+
+        /* My Booking View CSS */
+        #myBookingSection { display: none; }
+        .booking-card { background: #f8fafc; border: 1px dashed var(--primary); border-radius: 12px; padding: 20px; margin-top: 15px; }
+        .booking-card-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e2e8f0; font-size: 14px; }
+        .booking-card-item:last-child { border-bottom: none; }
+        .label { font-weight: 600; color: var(--text-muted); }
+        .value { font-weight: 700; color: var(--text-main); text-align: right; }
+        .status-badge { background: #dcfce7; color: #15803d; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+        .btn-secondary { width: 100%; background: #0f172a; color: white; padding: 12px; border: none; border-radius: 8px; font-weight: 600; font-size: 14px; cursor: pointer; margin-top: 15px; }
     </style>
 </head>
 <body>
 
-    <div class="booking-container">
+    <!-- 1. BOOKING FORM CONTAINER -->
+    <div class="booking-container" id="bookingFormSection">
         <div class="booking-header">
             <h2><i class="fa-solid fa-calendar-check" style="color: var(--primary);"></i> Complete Your Booking</h2>
             <p style="font-size: 13px; color: var(--text-muted);">Enter details & select your location</p>
         </div>
 
-        <div id="successMsg" class="success-message">
-            <i class="fa-solid fa-circle-check"></i> Booking confirmed! Thank you.
-        </div>
-
-        <!-- action="javascript:void(0);" prevents default browser page reload -->
-        <form id="bookingForm" action="javascript:void(0);">
+        <form id="bookingForm">
             <div class="service-summary-card">
                 <div class="service-title">
                     <i class="fa-solid fa-screwdriver-wrench"></i> <span id="displayService">General Service</span>
@@ -110,12 +113,53 @@
         </form>
     </div>
 
-    <!-- Firebase App & Firestore Compatibility SDKs (Non-module for max stability) -->
+    <!-- 2. MY BOOKING DETAILS CONTAINER (Opens After Confirmation) -->
+    <div class="booking-container" id="myBookingSection">
+        <div class="booking-header">
+            <i class="fa-solid fa-circle-check" style="font-size: 48px; color: #10b981; margin-bottom: 10px;"></i>
+            <h2>My Booking Details</h2>
+            <p style="font-size: 13px; color: var(--text-muted);">Your booking is confirmed! Here are the details:</p>
+        </div>
+
+        <div class="booking-card">
+            <div class="booking-card-item">
+                <span class="label">Booking Status</span>
+                <span class="status-badge">Confirmed</span>
+            </div>
+            <div class="booking-card-item">
+                <span class="label">Customer Name</span>
+                <span class="value" id="viewName">-</span>
+            </div>
+            <div class="booking-card-item">
+                <span class="label">Phone Number</span>
+                <span class="value" id="viewPhone">-</span>
+            </div>
+            <div class="booking-card-item">
+                <span class="label">Service Requested</span>
+                <span class="value" id="viewService">-</span>
+            </div>
+            <div class="booking-card-item">
+                <span class="label">Total Amount</span>
+                <span class="value" id="viewPrice" style="color: #166534;">-</span>
+            </div>
+            <div class="booking-card-item">
+                <span class="label">Date & Time</span>
+                <span class="value" id="viewDateTime">-</span>
+            </div>
+            <div class="booking-card-item">
+                <span class="label">Address</span>
+                <span class="value" id="viewAddress">-</span>
+            </div>
+        </div>
+
+        <button class="btn-secondary" onclick="window.location.reload();">Book Another Service</button>
+    </div>
+
+    <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 
     <script>
-        // 1. Firebase Configuration
         const firebaseConfig = {
             apiKey: "AIzaSyDFxFdt_0hEzJnR3Ze-GfX_1uCzW_lgfnE",
             authDomain: "cryovix-fixify.firebaseapp.com",
@@ -125,26 +169,28 @@
             appId: "1:871696054329:web:4291aa97259ac0616875e8"
         };
 
-        // Initialize Firebase
-        let db;
+        let db = null;
         try {
-            firebase.initializeApp(firebaseConfig);
+            if (!firebase.apps.length) {
+                firebase.initializeApp(firebaseConfig);
+            }
             db = firebase.firestore();
         } catch (e) {
             console.error("Firebase init error:", e);
         }
 
-        // 2. Extract Query Parameters
         const urlParams = new URLSearchParams(window.location.search);
         const serviceName = urlParams.get('service') || 'General Home Service';
-        const servicePrice = urlParams.get('price') || urlParams.get('offer') || '₹499';
+        let rawPrice = urlParams.get('price') || urlParams.get('offer') || '499';
+        rawPrice = rawPrice.replace(/₹/g, '').trim();
 
         document.getElementById('displayService').innerText = serviceName;
-        document.getElementById('displayPrice').innerText = servicePrice.startsWith('₹') ? servicePrice : '₹' + servicePrice;
+        document.getElementById('displayPrice').innerText = '₹' + rawPrice;
         document.getElementById('displayOffer').innerText = urlParams.get('offer') ? 'Offer Applied' : 'Standard Rate';
 
-        // 3. Handle GPS Location
-        document.getElementById('geoBtn').addEventListener('click', function() {
+        // GPS Location
+        document.getElementById('geoBtn').addEventListener('click', function(e) {
+            e.preventDefault();
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(position) {
                     const lat = position.coords.latitude;
@@ -159,7 +205,7 @@
             }
         });
 
-        // 4. Form Submit Logic (Guaranteed No Automatic Page Redirect)
+        // Form Submission Logic
         document.getElementById('bookingForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
@@ -174,21 +220,19 @@
                 price: document.getElementById('displayPrice').innerText,
                 date: document.getElementById('custDate').value,
                 timeSlot: document.getElementById('custSlot').value,
-                address: document.getElementById('custAddress').value.trim(),
-                city: document.getElementById('custCity').value.trim(),
+                address: document.getElementById('custAddress').value.trim() + ", " + document.getElementById('custCity').value.trim(),
                 googleMapLink: document.getElementById('googleMapLink').value,
                 timestamp: new Date().toISOString()
             };
 
             try {
-                // Step A: Save to Firestore
                 if (db) {
                     await db.collection("customers").add(bookingData);
                 } else {
-                    throw new Error("Firebase SDK failed to load.");
+                    throw new Error("Firebase connection failed.");
                 }
 
-                // Step B: Send Telegram Alert
+                // Telegram Alert
                 const botToken = "8817937034:AAGI-_31FYe3frL_N5qINHK2eGEpeQrJIJk"; 
                 const chatId = "8528476017";
                 const telegramMsg = encodeURIComponent(
@@ -198,18 +242,29 @@
                 fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${telegramMsg}`, { mode: 'no-cors' })
                     .catch(err => console.warn("Telegram failed:", err));
 
-                // Step C: Display Success Message
-                document.getElementById('successMsg').style.display = 'block';
-                submitBtn.innerText = "Booking Confirmed ✓";
-                alert("🎉 Success! Your booking has been saved.");
+                // Open 'My Booking' Section
+                showMyBookingDetails(bookingData);
 
             } catch (err) {
                 console.error("Booking error:", err);
-                alert("⚠️ Booking Error: " + err.message + "\nPlease check Firestore database rules in Firebase Console.");
+                alert("⚠️ Booking Error: " + err.message);
                 submitBtn.innerText = "Confirm & Book Now";
                 submitBtn.disabled = false;
             }
         });
+
+        // Function to render My Booking Details Card
+        function showMyBookingDetails(data) {
+            document.getElementById('bookingFormSection').style.display = 'none';
+            document.getElementById('myBookingSection').style.display = 'block';
+
+            document.getElementById('viewName').innerText = data.name;
+            document.getElementById('viewPhone').innerText = data.phone;
+            document.getElementById('viewService').innerText = data.service;
+            document.getElementById('viewPrice').innerText = data.price;
+            document.getElementById('viewDateTime').innerText = `${data.date} (${data.timeSlot})`;
+            document.getElementById('viewAddress').innerText = data.address;
+        }
     </script>
 </body>
 </html>

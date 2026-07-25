@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Cryovix Fixify</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background: #f1f5f9; padding: 20px; }
+        .admin-card { max-width: 1100px; margin: auto; background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        h2 { margin-bottom: 20px; color: #0f172a; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #e2e8f0; font-size: 13px; }
+        th { background: #f8fafc; font-weight: 700; color: #475569; }
+        .btn-map { background: #10b981; color: white; padding: 6px 10px; text-decoration: none; border-radius: 6px; font-weight: 600; display: inline-block; font-size: 11px; }
+        .btn-wa { background: #25d366; color: white; padding: 6px 10px; text-decoration: none; border-radius: 6px; font-weight: 600; display: inline-block; font-size: 11px; }
+    </style>
+</head>
+<body>
+
+    <div class="admin-card">
+        <h2><i class="fa-solid fa-user-shield" style="color: #4f46e5;"></i> Admin Panel - Customer Bookings</h2>
+        
+        <table id="adminTable">
+            <thead>
+                <tr>
+                    <th>Customer Details</th>
+                    <th>Service & Price</th>
+                    <th>Date & Slot</th>
+                    <th>Address</th>
+                    <th>GPS Link</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="adminTableBody">
+                <tr><td colspan="6" style="text-align: center;">Loading bookings...</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDFxFdt_0hEzJnR3Ze-GfX_1uCzW_lgfnE",
+            authDomain: "cryovix-fixify.firebaseapp.com",
+            projectId: "cryovix-fixify",
+            storageBucket: "cryovix-fixify.firebasestorage.app",
+            messagingSenderId: "871696054329",
+            appId: "1:871696054329:web:4291aa97259ac0616875e8"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // Real-time listener for bookings
+        db.collection("customers").orderBy("timestamp", "desc").onSnapshot(snapshot => {
+            const tbody = document.getElementById('adminTableBody');
+            if (snapshot.empty) {
+                tbody.innerHTML = "<tr><td colspan='6' style='text-align: center;'>No bookings found.</td></tr>";
+                return;
+            }
+
+            tbody.innerHTML = "";
+            snapshot.forEach(doc => {
+                const data = doc.data();
+                const mapBtn = data.googleMapLink && data.googleMapLink !== 'Not Shared' 
+                    ? `<a href="${data.googleMapLink}" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> View Map</a>` 
+                    : 'Not Shared';
+
+                tbody.innerHTML += `
+                    <tr>
+                        <td><strong>${data.name}</strong><br><small>${data.phone}</small></td>
+                        <td>${data.service}<br><strong style="color:#166534;">${data.price}</strong></td>
+                        <td>${data.date}<br><small>${data.timeSlot}</small></td>
+                        <td>${data.address}, ${data.city || ''}</td>
+                        <td>${mapBtn}</td>
+                        <td><a href="https://wa.me/91${data.phone}" target="_blank" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> Chat</a></td>
+                    </tr>
+                `;
+            });
+        });
+    </script>
+</body>
+</html>

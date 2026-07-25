@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Cryovix Fixify</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background: #f1f5f9; padding: 20px; }
+        .admin-card { max-width: 1100px; margin: auto; background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        
+        /* Navigation & Header */
+        .dashboard-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 2px solid #f1f5f9; }
+        .btn-dashboard { background: #4f46e5; color: white; padding: 10px 18px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; }
+        .btn-dashboard:hover { background: #4338ca; }
+        
+        /* Dashboard Stats Cards */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 25px; }
+        .stat-card { background: #f8fafc; border: 1px solid #e2e8f0; padding: 15px; border-radius: 10px; text-align: left; }
+        .stat-card p { font-size: 12px; color: #64748b; font-weight: 600; text-transform: uppercase; }
+        .stat-card h3 { font-size: 22px; color: #0f172a; margin-top: 5px; }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #e2e8f0; font-size: 13px; }
+        th { background: #f8fafc; font-weight: 700; color: #475569; }
+        .btn-map { background: #10b981; color: white; padding: 6px 10px; text-decoration: none; border-radius: 6px; font-weight: 600; display: inline-block; font-size: 11px; }
+        .btn-wa { background: #25d366; color: white; padding: 6px 10px; text-decoration: none; border-radius: 6px; font-weight: 600; display: inline-block; font-size: 11px; }
+    </style>
+</head>
+<body>
+
+    <div class="admin-card">
+        <!-- Top Navigation with Dashboard Button -->
+        <div class="dashboard-nav">
+            <h2><i class="fa-solid fa-user-shield" style="color: #4f46e5;"></i> Admin Panel</h2>
+            <a href="#" class="btn-dashboard"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
+        </div>
+
+        <!-- Dashboard Quick Overview Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <p>Total Bookings</p>
+                <h3 id="totalBookings">0</h3>
+            </div>
+            <div class="stat-card">
+                <p>Today's Bookings</p>
+                <h3 id="todayBookings">0</h3>
+            </div>
+            <div class="stat-card">
+                <p>Status</p>
+                <h3 style="color: #10b981;">Active</h3>
+            </div>
+        </div>
+        
+        <h3>Customer Bookings</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Customer Details</th>
+                    <th>Service & Price</th>
+                    <th>Date & Slot</th>
+                    <th>Address</th>
+                    <th>GPS Link</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="adminTableBody">
+                <tr><td colspan="6" style="text-align: center;">Loading bookings...</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDFxFdt_0hEzJnR3Ze-GfX_1uCzW_lgfnE",
+            authDomain: "cryovix-fixify.firebaseapp.com",
+            projectId: "cryovix-fixify",
+            storageBucket: "cryovix-fixify.firebasestorage.app",
+            messagingSenderId: "871696054329",
+            appId: "1:871696054329:web:4291aa97259ac0616875e8"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // Real-time listener for bookings
+        db.collection("customers").orderBy("timestamp", "desc").onSnapshot(snapshot => {
+            const tbody = document.getElementById('adminTableBody');
+            
+            // Stats update
+            document.getElementById('totalBookings').innerText = snapshot.size;
+
+            if (snapshot.empty) {
+                tbody.innerHTML = "<tr><td colspan='6' style='text-align: center;'>No bookings found.</td></tr>";
+                return;
+            }
+
+            tbody.innerHTML = "";
+            let todayCount = 0;
+            const todayStr = new Date().toISOString().split('T')[0];
+
+            snapshot.forEach(doc => {
+                const data = doc.data();
+
+                // Count today's bookings
+                if (data.date === todayStr) {
+                    todayCount++;
+                }
+
+                const mapBtn = data.googleMapLink && data.googleMapLink !== 'Not Shared' 
+                    ? `<a href="${data.googleMapLink}" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> View Map</a>` 
+                    : 'Not Shared';
+
+                tbody.innerHTML += `
+                    <tr>
+                        <td><strong>${data.name}</strong><br><small>${data.phone}</small></td>
+                        <td>${data.service}<br><strong style="color:#166534;">${data.price}</strong></td>
+                        <td>${data.date}<br><small>${data.timeSlot}</small></td>
+                        <td>${data.address}, ${data.city || ''}</td>
+                        <td>${mapBtn}</td>
+                        <td><a href="https://wa.me/91${data.phone}" target="_blank" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> Chat</a></td>
+                    </tr>
+                `;
+            });
+
+            document.getElementById('todayBookings').innerText = todayCount;
+        });
+    </script>
+</body>
+</html>
