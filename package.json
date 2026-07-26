@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-  "build": "react-scripts build"
-    
+    "build": "echo \"Static HTML site - no build needed\""
   },
   "repository": {
     "type": "git",
@@ -19,8 +18,5 @@
   "bugs": {
     "url": "https://github.com/cryovixcoolingsystem-ai/CRYOVIX.WEB/issues"
   },
-  "homepage": "https://github.com/cryovixcoolingsystem-ai/CRYOVIX.WEB#readme",
-  "devDependencies": {
-    "react-scripts": "^5.0.1"
-  }
+  "homepage": "https://github.com/cryovixcoolingsystem-ai/CRYOVIX.WEB#readme"
 }
