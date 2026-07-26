@@ -1,5 +1,0 @@
-registerUser()
-
-loginUser()
-
-logoutUser()
