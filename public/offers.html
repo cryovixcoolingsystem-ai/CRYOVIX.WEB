@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Special Offers | Cryovix Fixify</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <style>
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --blue-light: #eff6ff;
+
+            --green: #16a34a;
+            --green-light: #dcfce7;
+
+            --orange: #f97316;
+            --orange-light: #fff7ed;
+
+            --red: #ef4444;
+            --red-light: #fef2f2;
+
+            --dark: #0f172a;
+            --text: #334155;
+            --muted: #64748b;
+
+            --bg: #f8fafc;
+            --white: #ffffff;
+
+            --border: #e2e8f0;
+
+            --shadow:
+                0 15px 45px rgba(15, 23, 42, 0.07);
+
+            --shadow-hover:
+                0 25px 65px rgba(15, 23, 42, 0.13);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1180px, calc(100% - 32px));
+            margin: auto;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+
+            min-height: 520px;
+
+            display: flex;
+            align-items: center;
+
+            text-align: center;
+
+            color: white;
+
+            background:
+                radial-gradient(
+                    circle at 15% 20%,
+                    rgba(37, 99, 235, 0.30),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 85% 75%,
+                    rgba(59, 130, 246, 0.20),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #050b16,
+                    #0f172a 55%,
+                    #172554
+                );
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background-image:
+                linear-gradient(
+                    rgba(255,255,255,.035) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,.035) 1px,
+                    transparent 1px
+                );
+
+            background-size: 50px 50px;
+
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+
+            max-width: 800px;
+
+            margin: auto;
+
+            padding: 90px 0 110px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+
+            align-items: center;
+            gap: 8px;
+
+            padding: 8px 17px;
+
+            border-radius: 50px;
+
+            background: rgba(255,255,255,.08);
+
+            border: 1px solid rgba(255,255,255,.16);
+
+            color: #bfdbfe;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 22px;
+        }
+
+        .hero-badge i {
+            color: #60a5fa;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+
+            line-height: 1.05;
+
+            letter-spacing: -2.5px;
+
+            font-weight: 800;
+
+            margin-bottom: 22px;
+        }
+
+        .hero h1 span {
+            color: #60a5fa;
+        }
+
+        .hero p {
+            max-width: 680px;
+
+            margin: auto;
+
+            color: #aab7ca;
+
+            font-size: 16px;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================
+           QUICK INFO
+        ========================= */
+
+        .quick-info {
+            position: relative;
+
+            margin-top: -48px;
+
+            z-index: 5;
+        }
+
+        .info-box {
+            background: white;
+
+            border: 1px solid var(--border);
+
+            border-radius: 20px;
+
+            box-shadow: var(--shadow-hover);
+
+            padding: 22px 25px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 20px;
+        }
+
+        .info-item {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 11px;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            color: #475569;
+        }
+
+        .info-item i {
+            width: 38px;
+            height: 38px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 11px;
+
+            background: var(--blue-light);
+
+            color: var(--primary);
+
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           SECTION
+        ========================= */
+
+        .offers-section {
+            padding: 90px 0 110px;
+        }
+
+        .section-header {
+            max-width: 700px;
+
+            margin: 0 auto 50px;
+
+            text-align: center;
+        }
+
+        .eyebrow {
+            display: inline-block;
+
+            color: var(--primary);
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 12px;
+        }
+
+        .section-header h2 {
+            color: var(--dark);
+
+            font-size: clamp(
+                2rem,
+                4vw,
+                3rem
+            );
+
+            line-height: 1.2;
+
+            letter-spacing: -1px;
+
+            margin-bottom: 13px;
+        }
+
+        .section-header p {
+            color: var(--muted);
+
+            font-size: 14px;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================
+           OFFER GRID
+        ========================= */
+
+        .offers-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+
+        /* =========================
+           OFFER CARD
+        ========================= */
+
+        .offer-card {
+            position: relative;
+
+            background: white;
+
+            border: 1px solid var(--border);
+
+            border-radius: 22px;
+
+            padding: 28px;
+
+            overflow: hidden;
+
+            box-shadow: var(--shadow);
+
+            transition:
+                transform .35s ease,
+                box-shadow .35s ease,
+                border-color .35s ease;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-8px);
+
+            box-shadow: var(--shadow-hover);
+
+            border-color: #bfdbfe;
+        }
+
+        .offer-card.popular {
+            border: 2px solid var(--primary);
+        }
+
+
+        /* =========================
+           BADGES
+        ========================= */
+
+        .popular-badge {
+            position: absolute;
+
+            top: 17px;
+            right: 17px;
+
+            padding: 6px 10px;
+
+            border-radius: 50px;
+
+            background: var(--primary);
+
+            color: white;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            text-transform: uppercase;
+
+            letter-spacing: .5px;
+        }
+
+        .limited-badge {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 5px;
+
+            background: var(--red-light);
+
+            color: var(--red);
+
+            padding: 5px 9px;
+
+            border-radius: 6px;
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            margin-bottom: 16px;
+        }
+
+
+        /* =========================
+           ICON
+        ========================= */
+
+        .offer-icon {
+            width: 62px;
+            height: 62px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 17px;
+
+            background: var(--blue-light);
+
+            color: var(--primary);
+
+            font-size: 23px;
+
+            margin-bottom: 20px;
+
+            transition: .35s ease;
+        }
+
+        .offer-card:hover .offer-icon {
+            background: var(--primary);
+
+            color: white;
+
+            transform: rotate(-5deg);
+        }
+
+
+        /* =========================
+           CARD TEXT
+        ========================= */
+
+        .offer-card h3 {
+            color: var(--dark);
+
+            font-size: 19px;
+
+            margin-bottom: 9px;
+        }
+
+        .description {
+            color: var(--muted);
+
+            font-size: 12px;
+
+            line-height: 1.7;
+
+            min-height: 42px;
+        }
+
+
+        /* =========================
+           PRICE
+        ========================= */
+
+        .price-box {
+            display: flex;
+
+            align-items: center;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
+
+            margin: 20px 0;
+        }
+
+        .old-price {
+            color: #94a3b8;
+
+            text-decoration: line-through;
+
+            font-size: 13px;
+
+            font-weight: 600;
+        }
+
+        .price {
+            color: var(--primary);
+
+            font-size: 29px;
+
+            line-height: 1;
+
+            font-weight: 800;
+        }
+
+        .off {
+            background: var(--green-light);
+
+            color: #15803d;
+
+            padding: 5px 8px;
+
+            border-radius: 6px;
+
+            font-size: 10px;
+
+            font-weight: 800;
+        }
+
+
+        /* =========================
+           DETAILS
+        ========================= */
+
+        .details {
+            border-top: 1px solid var(--border);
+
+            padding-top: 18px;
+
+            display: grid;
+
+            gap: 11px;
+
+            margin-bottom: 22px;
+        }
+
+        .detail {
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            color: #475569;
+
+            font-size: 12px;
+
+            font-weight: 600;
+        }
+
+        .detail i {
+            width: 20px;
+
+            color: var(--primary);
+        }
+
+
+        /* =========================
+           BOOK BUTTON
+        ========================= */
+
+        .book-btn {
+            width: 100%;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 9px;
+
+            padding: 14px;
+
+            background: var(--primary);
+
+            color: white;
+
+            border-radius: 11px;
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            transition: .3s ease;
+        }
+
+        .book-btn:hover {
+            background: var(--primary-dark);
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 10px 25px
+                rgba(37,99,235,.25);
+        }
+
+        .book-btn i {
+            transition: .3s ease;
+        }
+
+        .book-btn:hover i {
+            transform: translateX(4px);
+        }
+
+
+        /* =========================
+           BOTTOM NOTE
+        ========================= */
+
+        .bottom-note {
+            margin-top: 40px;
+
+            padding: 16px 20px;
+
+            background: #eff6ff;
+
+            border: 1px solid #dbeafe;
+
+            border-radius: 12px;
+
+            text-align: center;
+
+            color: #475569;
+
+            font-size: 12px;
+        }
+
+        .bottom-note i {
+            color: var(--primary);
+
+            margin-right: 5px;
+        }
+
+
+        /* =========================
+           CTA
+        ========================= */
+
+        .cta-section {
+            padding: 0 0 100px;
+        }
+
+        .cta-box {
+            position: relative;
+
+            overflow: hidden;
+
+            padding: 60px 30px;
+
+            text-align: center;
+
+            color: white;
+
+            border-radius: 25px;
+
+            background:
+                radial-gradient(
+                    circle at 10% 20%,
+                    rgba(96,165,250,.25),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    135deg,
+                    #0b1220,
+                    #172554
+                );
+        }
+
+        .cta-box h2 {
+            font-size: clamp(
+                1.8rem,
+                4vw,
+                2.7rem
+            );
+
+            margin-bottom: 12px;
+        }
+
+        .cta-box p {
+            max-width: 600px;
+
+            margin: auto;
+
+            color: #aab7ca;
+
+            font-size: 13px;
+
+            line-height: 1.8;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            margin-top: 25px;
+
+            padding: 13px 22px;
+
+            background: white;
+
+            color: var(--dark);
+
+            border-radius: 10px;
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            transition: .3s ease;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 12px 30px rgba(0,0,0,.2);
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media(max-width: 1000px) {
+
+            .offers-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+        @media(max-width: 700px) {
+
+            .hero {
+                min-height: 500px;
+            }
+
+            .hero-content {
+                padding:
+                    75px 0 100px;
+            }
+
+            .hero h1 {
+                letter-spacing: -1.5px;
+            }
+
+            .info-box {
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+                padding: 18px 12px;
+            }
+
+            .info-item {
+                justify-content: flex-start;
+                font-size: 10px;
+            }
+
+            .offers-section {
+                padding-top: 70px;
+            }
+
+            .offers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .offer-card {
+                padding: 25px;
+            }
+
+        }
+
+        @media(max-width: 450px) {
+
+            .container {
+                width:
+                    calc(100% - 24px);
+            }
+
+            .info-box {
+                grid-template-columns: 1fr;
+            }
+
+            .info-item {
+                justify-content: center;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+<!-- ==========================================
+     HERO SECTION
+========================================== -->
+
+<section class="hero">
+
+    <div class="container">
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+                <i class="fa-solid fa-fire"></i>
+                Special Offers
+            </div>
+
+            <h1>
+                Save More With
+                <span>Cryovix Offers</span>
+            </h1>
+
+            <p>
+                Get professional repair and maintenance services
+                at special prices. Choose your offer and book
+                your service in just a few clicks.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==========================================
+     QUICK INFO
+========================================== -->
+
+<section class="quick-info">
+
+    <div class="container">
+
+        <div class="info-box">
+
+            <div class="info-item">
+                <i class="fa-solid fa-tags"></i>
+                Special Prices
+            </div>
+
+            <div class="info-item">
+                <i class="fa-solid fa-user-check"></i>
+                Professional Service
+            </div>
+
+            <div class="info-item">
+                <i class="fa-solid fa-bolt"></i>
+                Quick Booking
+            </div>
+
+            <div class="info-item">
+                <i class="fa-solid fa-shield-halved"></i>
+                Trusted Support
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==========================================
+     OFFERS SECTION
+========================================== -->
+
+<section class="offers-section">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <span class="eyebrow">
+                Limited Time Deals
+            </span>
+
+            <h2>
+                Our Best Service Offers
+            </h2>
+
+            <p>
+                Select any offer below and click
+                <strong>Book Now</strong>. Your selected
+                service, price and offer will automatically
+                be sent to the booking page.
+            </p>
+
+        </div>
+
+
+        <div class="offers-grid">
+
+
+            <!-- ==========================
+                 OFFER 1
+            =========================== -->
+
+            <div class="offer-card popular">
+
+                <span class="popular-badge">
+                    Most Popular
+                </span>
+
+                <span class="limited-badge">
+                    <i class="fa-solid fa-clock"></i>
+                    Limited Offer
+                </span>
+
+                <div class="offer-icon">
+                    <i class="fa-solid fa-snowflake"></i>
+                </div>
+
+                <h3>
+                    AC General Service
+                </h3>
+
+                <p class="description">
+                    Professional AC cleaning and
+                    general maintenance service.
+                </p>
+
+                <div class="price-box">
+
+                    <span class="old-price">
+                        ₹699
+                    </span>
+
+                    <span class="price">
+                        ₹499
+                    </span>
+
+                    <span class="off">
+                        29% OFF
+                    </span>
+
+                </div>
+
+                <div class="details">
+
+                    <div class="detail">
+                        <i class="fa-solid fa-clock"></i>
+                        60 Minutes Service
+                    </div>
+
+                    <div class="detail">
+                        <i class="fa-solid fa-user-check"></i>
+                        Professional Technician
+                    </div>
+
+                    <div class="detail">
+                        <i class="fa-solid fa-house"></i>
+                        Home Service
+                    </div>
+
+                </div>
+
+                <a
+                    class="book-btn"
+                    href="booking.html?service=AC%20General%20Service&price=499&offer=29%25%20OFF">
+
+                    Book Now
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+
+            <!-- ==========================
+                 OFFER 2
+            =========================== -->
+
+            <div class="offer-card">
+
+                <span class="limited-badge">
+                    <i class="fa-solid fa-fire"></i>
+                    Hot Deal
+                </span>
+
+                <div class="offer-icon">
+                    <i class="fa-solid fa-wind"></i>
+                </div>
+
+                <h3>
+                    AC Deep Cleaning
+                </h3>
+
+                <p class="description">
+                    Complete AC deep cleaning for
+                    improved cooling and performance.
+                </p>
+
+                <div class="price-box">
+
+                    <span class="old-price">
+                        ₹1,199
+                    </span>
+
+                    <span class="price">
+                        ₹899
+                    </span>
+
+                    <span class="off">
+                        25% OFF
+                    </span>
+
+                </div>
+
+                <div class="details">
+
+                    <div class="detail">
+                        <i class="fa-solid fa-clock"></i>
+                        90 Minutes Service
+                    </div>
+
+                    <div class="detail">
+                        <i class="fa-solid fa-user-check"></i>
+                        Skilled Technician
+                    </div>
+
+                    <div class="detail">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        Quality Service
+                    </div>
+
+                </div>
+
+                <a
+                    class="book-btn"
+                    href="booking.html?service=AC%20Deep%20Cleaning&price=899&offer=25%25%20OFF">
+
+                    Book Now
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+
+            <!-- ==========================
+                 OFFER 3
+            =========================== -->
+
+            <div class="offer-card">
+
+                <span class="limited-badge">
+                    <i class="fa-solid fa-bolt"></i>
+                    Special Price
+                </span>
+
+                <div class="offer-icon">
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                </div>
+
+                <h3>
+                    AC Repair Service
+                </h3>
+
+                <p class="description">
+                    Professional AC inspection and
+                    repair for common problems.
+                </p>
+
+                <div class="price-box">
+
+                    <span class="old-price">
+                        ₹799
+                    </span>
+
+                    <span class="price">
+                        ₹599
+                    </span>
+
+                    <span class="off">
+                        25% OFF
+                    </span>
+
+                </div>
+
+                <div class="details">
+
+                    <div class="detail">
+                        <i class="fa-solid fa-clock"></i>
+                        60–90 Minutes
+                    </div>
+
+                    <div class="detail">
+                        <i class="fa-solid fa-user-check"></i>
+                        Professional Technician
+                    </div>
+
+                    <div class="detail">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        Inspection Included
+                    </div>
+
+                </div>
+
+                <a
+                    class="book-btn"
+                    href="booking.html?service=AC%20Repair%20Service&price=599&offer=25%25%20OFF">
+
+                    Book Now
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+
+            <!-- ==========================
+                 OFFER 4
+            =========================== -->
+
+            <div class="offer-card">
+
+                <span class="limited-badge">
+                    <i class="fa-solid fa-tag"></i>
+                    Best Value
+                </span>
+
+                <div class="offer-icon">
+                    <i class="fa-solid fa-faucet-drip"></i>
+                </div>
+
+                <h3>
+                    Plumbing Service
+                </h3>
+
+                <p class="description">
+                    Reliable plumbing inspection and
+                    repair service for your home.
+                </p>
+
+                <div class="price-box">
+
+                    <span class="old-price">
+                        ₹599
+                    </span>
+
+                    <span class="price">
+                        ₹399
+                    </span>
+
+                    <span class="off">
+                        33% OFF
+                    </span>
+
+                </div>
+
+                <div class="details">
+
+                    <div class="detail">
+                        <i class="fa-solid fa-clock"></i>
+                        45 Minutes Service
+                    </div>
+
+                    <div class="detail">
+                        <i class="fa-solid fa-user-check"></i>
+                        Skilled Professional
+                    </div>
+
+                    <div class="detail">
+                        <i class="fa-solid fa-house"></i>
+                        Home Visit
+                    </div>
+
+                </div>
+
+                <a
+                    class="book-btn"
+                    href="booking.html?service=Plumbing%20Service&price=399&offer=33%25%20OFF">
+
+                    Book Now
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+
+            <!-- ==========================
+                 OFFER 5
+            =========================== -->
+
+            <div class="offer-card">
+
+                <span class="limited-badge">
+                    <i class="fa-solid fa-bolt"></i>
+                    Special Offer
+                </span>
+
+                <div class="offer-icon">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+
+                <h3>
+                    Electrical Service
+                </h3>
+
+                <p class="description">
+                    Professional electrical inspection
+                    and repair service.
+                </p>
+
+                <div class="price-box">
+
+                    <span class="old-price">
+                        ₹699
+                    </span>
+
+                    <span class="price">
+                        ₹499
+                    </span>
+
+                    <span class="off">
+                        29% OFF
+                    </span>
+
+                </div>
+
+                <div class="details">
+
+                    <div class="detail">
+                        <i class="fa-solid fa-clock"></i>
+                        60 Minutes Service
+                    </div>
+
+                    <div class="detail">
+                        <i class="fa-solid fa-user-check"></i>
+                        Qualified Professional
+                    </div>
+
+                    <div class="detail">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        Reliable Service
+                    </div>
+
+                </div>
+
+                <a
+                    class="book-btn"
+                    href="booking.html?service=Electrical%20Service&price=499&offer=29%25%20OFF">
+
+                    Book Now
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+
+            <!-- ==========================
+                 OFFER 6
+            =========================== -->
+
+            <div class="offer-card">
+
+                <span class="limited-badge">
+                    <i class="fa-solid fa-house"></i>
+                    Home Service
+                </span>
+
+                <div class="offer-icon">
+                    <i class="fa-solid fa-gears"></i>
+                </div>
+
+                <h3>
+                    General Home Service
+                </h3>
+
+                <p class="description">
+                    Professional home maintenance
+                    service for everyday requirements.
+                </p>
+
+                <div class="price-box">
+
+                    <span class="old-price">
+                        ₹699
+                    </span>
+
+                    <span class="price">
+                        ₹499
+                    </span>
+
+                    <span class="off">
+                        29% OFF
+                    </span>
+
+                </div>
+
+                <div class="details">
+
+                    <div class="detail">
+                        <i class="fa-solid fa-clock"></i>
+                        60 Minutes Service
+                    </div>
+
+                    <div class="detail">
+                        <i class="fa-solid fa-user-check"></i>
+                        Professional Service
+                    </div>
+
+                    <div class="detail">
+                        <i class="fa-solid fa-house"></i>
+                        Home Visit
+                    </div>
+
+                </div>
+
+                <a
+                    class="book-btn"
+                    href="booking.html?service=General%20Home%20Service&price=499&offer=29%25%20OFF">
+
+                    Book Now
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- NOTE -->
+
+        <div class="bottom-note">
+
+            <i class="fa-solid fa-circle-info"></i>
+
+            Offer prices are starting prices and may vary
+            depending on the actual service requirement.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==========================================
+     CTA
+========================================== -->
+
+<section class="cta-section">
+
+    <div class="container">
+
+        <div class="cta-box">
+
+            <h2>
+                Need Professional Service?
+            </h2>
+
+            <p>
+                Choose your preferred offer and book your
+                service quickly with Cryovix Fixify.
+            </p>
+
+            <a
+                href="booking.html"
+                class="cta-btn">
+
+                Book a Service
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</body>
+</html>

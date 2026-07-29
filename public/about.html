@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Cryovix Fixify provides reliable, professional and fast repair and maintenance services for homes and businesses.">
+
+    <meta name="theme-color" content="#0b1220">
+
+    <title>About Us | Cryovix Fixify</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        /* ================================
+           ROOT
+        ================================= */
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #60a5fa;
+
+            --dark: #0b1220;
+            --dark-2: #111827;
+
+            --text: #334155;
+            --muted: #64748b;
+
+            --light: #f8fafc;
+            --white: #ffffff;
+
+            --border: #e2e8f0;
+
+            --radius-sm: 12px;
+            --radius-md: 18px;
+            --radius-lg: 26px;
+
+            --shadow-sm:
+                0 5px 20px rgba(15, 23, 42, 0.06);
+
+            --shadow-md:
+                0 15px 40px rgba(15, 23, 42, 0.08);
+
+            --shadow-lg:
+                0 25px 70px rgba(15, 23, 42, 0.12);
+
+            --transition:
+                all .35s cubic-bezier(.4, 0, .2, 1);
+        }
+
+
+        /* ================================
+           RESET
+        ================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+            background: var(--light);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        .container {
+            width: min(1180px, calc(100% - 40px));
+            margin: auto;
+        }
+
+
+        /* ================================
+           HERO
+        ================================= */
+
+        .hero {
+            position: relative;
+            min-height: 600px;
+
+            display: flex;
+            align-items: center;
+
+            text-align: center;
+            color: white;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(37, 99, 235, .28),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 80% 70%,
+                    rgba(59, 130, 246, .18),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #070d18,
+                    #0f172a 50%,
+                    #111c33
+                );
+        }
+
+        /* Grid background */
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+
+            background-image:
+                linear-gradient(
+                    rgba(255,255,255,.035) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,.035) 1px,
+                    transparent 1px
+                );
+
+            background-size: 55px 55px;
+
+            mask-image:
+                linear-gradient(
+                    to bottom,
+                    black,
+                    transparent
+                );
+
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+
+            max-width: 850px;
+            margin: auto;
+
+            padding: 110px 0 100px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            padding: 8px 16px;
+
+            border-radius: 50px;
+
+            background: rgba(37, 99, 235, .12);
+            border: 1px solid rgba(96, 165, 250, .25);
+
+            color: #93c5fd;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            letter-spacing: .8px;
+            text-transform: uppercase;
+
+            margin-bottom: 25px;
+
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-badge i {
+            font-size: 12px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.7rem);
+
+            line-height: 1.05;
+
+            letter-spacing: -2.5px;
+
+            font-weight: 800;
+
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #60a5fa;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+
+            color: #a7b4c8;
+
+            font-size: clamp(
+                1rem,
+                2vw,
+                1.18rem
+            );
+
+            line-height: 1.8;
+        }
+
+
+        /* ================================
+           HERO BUTTONS
+        ================================= */
+
+        .hero-buttons {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 14px;
+
+            margin-top: 35px;
+
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 10px;
+
+            padding: 13px 22px;
+
+            border-radius: 12px;
+
+            font-weight: 700;
+            font-size: 14px;
+
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            color: white;
+
+            background: var(--primary);
+
+            box-shadow:
+                0 10px 30px rgba(37,99,235,.25);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 15px 35px rgba(37,99,235,.35);
+        }
+
+        .btn-outline {
+            color: white;
+
+            border: 1px solid rgba(255,255,255,.18);
+
+            background: rgba(255,255,255,.05);
+
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--dark);
+
+            transform: translateY(-3px);
+        }
+
+
+        /* ================================
+           TRUST BAR
+        ================================= */
+
+        .trust-bar {
+            position: relative;
+
+            margin-top: -35px;
+
+            z-index: 5;
+        }
+
+        .trust-box {
+            background: white;
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius-md);
+
+            box-shadow: var(--shadow-lg);
+
+            padding: 22px 30px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 20px;
+        }
+
+        .trust-item {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            color: #475569;
+
+            font-size: 13px;
+
+            font-weight: 600;
+        }
+
+        .trust-item i {
+            color: var(--primary);
+
+            font-size: 18px;
+        }
+
+
+        /* ================================
+           ABOUT SECTION
+        ================================= */
+
+        .about-section {
+            padding: 120px 0;
+        }
+
+        .about-grid {
+            display: grid;
+
+            grid-template-columns:
+                1.05fr .95fr;
+
+            gap: 80px;
+
+            align-items: center;
+        }
+
+
+        /* LEFT */
+
+        .eyebrow {
+            display: inline-block;
+
+            color: var(--primary);
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 15px;
+        }
+
+        .about-content h2 {
+            font-size: clamp(
+                2rem,
+                4vw,
+                3.2rem
+            );
+
+            line-height: 1.2;
+
+            letter-spacing: -1.5px;
+
+            color: var(--dark);
+
+            margin-bottom: 25px;
+        }
+
+        .about-content h2 span {
+            color: var(--primary);
+        }
+
+        .about-content p {
+            color: var(--muted);
+
+            font-size: 1rem;
+
+            margin-bottom: 18px;
+        }
+
+        .about-list {
+            margin-top: 30px;
+
+            display: grid;
+
+            gap: 15px;
+        }
+
+        .about-list-item {
+            display: flex;
+
+            gap: 12px;
+
+            align-items: flex-start;
+
+            color: #475569;
+
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+
+        .about-list-item i {
+            width: 24px;
+            height: 24px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background: #dbeafe;
+
+            color: var(--primary);
+
+            border-radius: 50%;
+
+            font-size: 11px;
+
+            margin-top: 2px;
+        }
+
+
+        /* ================================
+           STATS
+        ================================= */
+
+        .stats-container {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 18px;
+        }
+
+        .stat-card {
+            position: relative;
+
+            padding: 30px;
+
+            min-height: 170px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            background: white;
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius-md);
+
+            box-shadow: var(--shadow-sm);
+
+            overflow: hidden;
+
+            transition: var(--transition);
+        }
+
+        .stat-card::after {
+            content: "";
+
+            position: absolute;
+
+            width: 80px;
+            height: 80px;
+
+            border-radius: 50%;
+
+            right: -30px;
+            bottom: -30px;
+
+            background: #eff6ff;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-7px);
+
+            border-color: #bfdbfe;
+
+            box-shadow: var(--shadow-md);
+        }
+
+        .stat-card h3 {
+            position: relative;
+            z-index: 2;
+
+            color: var(--primary);
+
+            font-size: 2.3rem;
+
+            line-height: 1;
+
+            font-weight: 800;
+
+            margin-bottom: 10px;
+        }
+
+        .stat-card p {
+            position: relative;
+            z-index: 2;
+
+            color: var(--muted);
+
+            font-size: 13px;
+
+            font-weight: 600;
+        }
+
+
+        /* ================================
+           WHY CHOOSE US
+        ================================= */
+
+        .features-section {
+            position: relative;
+
+            padding: 120px 0;
+
+            background: white;
+
+            border-top: 1px solid var(--border);
+        }
+
+        .section-header {
+            max-width: 700px;
+
+            margin: 0 auto 60px;
+
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-size: clamp(
+                2rem,
+                4vw,
+                3rem
+            );
+
+            line-height: 1.2;
+
+            color: var(--dark);
+
+            letter-spacing: -1px;
+
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: var(--muted);
+
+            font-size: 1rem;
+        }
+
+
+        /* FEATURES GRID */
+
+        .features-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+        .feature-card {
+            position: relative;
+
+            padding: 38px 32px;
+
+            background: #f8fafc;
+
+            border: 1px solid #edf2f7;
+
+            border-radius: var(--radius-lg);
+
+            transition: var(--transition);
+
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            background: white;
+
+            transform: translateY(-8px);
+
+            border-color: #dbeafe;
+
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-number {
+            position: absolute;
+
+            top: 20px;
+            right: 25px;
+
+            font-size: 50px;
+
+            font-weight: 800;
+
+            color: #eaf2ff;
+
+            line-height: 1;
+        }
+
+        .feature-icon {
+            position: relative;
+            z-index: 2;
+
+            width: 62px;
+            height: 62px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 16px;
+
+            background: #dbeafe;
+
+            color: var(--primary);
+
+            font-size: 22px;
+
+            margin-bottom: 25px;
+
+            transition: var(--transition);
+        }
+
+        .feature-card:hover .feature-icon {
+            background: var(--primary);
+
+            color: white;
+
+            transform: rotate(-5deg) scale(1.05);
+        }
+
+        .feature-card h3 {
+            position: relative;
+            z-index: 2;
+
+            color: var(--dark);
+
+            font-size: 1.15rem;
+
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            position: relative;
+            z-index: 2;
+
+            color: var(--muted);
+
+            font-size: 14px;
+
+            line-height: 1.8;
+        }
+
+
+        /* ================================
+           CTA
+        ================================= */
+
+        .cta-section {
+            padding: 100px 0;
+        }
+
+        .cta-box {
+            position: relative;
+
+            overflow: hidden;
+
+            padding: 70px 50px;
+
+            text-align: center;
+
+            color: white;
+
+            border-radius: 30px;
+
+            background:
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(96,165,250,.25),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 90% 90%,
+                    rgba(37,99,235,.25),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    135deg,
+                    #0b1220,
+                    #172554
+                );
+
+            box-shadow:
+                0 25px 70px
+                rgba(15,23,42,.18);
+        }
+
+        .cta-box h2 {
+            font-size: clamp(
+                2rem,
+                4vw,
+                3rem
+            );
+
+            line-height: 1.2;
+
+            margin-bottom: 15px;
+
+            letter-spacing: -1px;
+        }
+
+        .cta-box p {
+            max-width: 650px;
+
+            margin: 0 auto;
+
+            color: #a7b4c8;
+
+            font-size: 15px;
+        }
+
+        .cta-button {
+            margin-top: 30px;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            padding: 14px 24px;
+
+            background: white;
+
+            color: var(--dark);
+
+            border-radius: 12px;
+
+            font-size: 14px;
+
+            font-weight: 800;
+
+            transition: var(--transition);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 15px 30px
+                rgba(0,0,0,.2);
+        }
+
+
+        /* ================================
+           ANIMATION
+        ================================= */
+
+        @keyframes fadeUp {
+
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        .hero-content {
+            animation: fadeUp .8s ease both;
+        }
+
+
+        /* ================================
+           RESPONSIVE
+        ================================= */
+
+        @media (max-width: 1000px) {
+
+            .about-grid {
+                grid-template-columns: 1fr;
+
+                gap: 50px;
+            }
+
+            .features-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            .container {
+                width:
+                    min(
+                        100% - 28px,
+                        1180px
+                    );
+            }
+
+            .hero {
+                min-height: 540px;
+            }
+
+            .hero-content {
+                padding:
+                    90px 0 80px;
+            }
+
+            .hero h1 {
+                letter-spacing: -1.5px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+
+                align-items: stretch;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .trust-box {
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+                padding: 22px 15px;
+
+                gap: 20px 10px;
+            }
+
+            .trust-item {
+                justify-content: flex-start;
+
+                font-size: 11px;
+            }
+
+            .about-section,
+            .features-section {
+                padding: 80px 0;
+            }
+
+            .stats-container {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .stat-card {
+                min-height: 145px;
+
+                padding: 22px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section {
+                padding: 70px 0;
+            }
+
+            .cta-box {
+                padding:
+                    55px 25px;
+            }
+
+        }
+
+
+        @media (max-width: 480px) {
+
+            .trust-box {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-card {
+                min-height: 130px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+    <!-- =================================
+         HERO
+    ================================= -->
+
+    <section class="hero">
+
+        <div class="container">
+
+            <div class="hero-content">
+
+                <div class="hero-badge">
+                    <i class="fa-solid fa-circle-check"></i>
+                    About Cryovix Fixify
+                </div>
+
+                <h1>
+                    Professional Repairs.
+                    <span>Trusted Service.</span>
+                </h1>
+
+                <p>
+                    We make repair and maintenance services simple,
+                    reliable and stress-free for homes and businesses.
+                    From quick fixes to regular maintenance,
+                    Cryovix Fixify is built around quality and trust.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#why-us"
+                       class="btn btn-primary">
+                        Why Choose Us
+                        <i class="fa-solid fa-arrow-down"></i>
+                    </a>
+
+                    <a href="#contact"
+                       class="btn btn-outline">
+                        Get Started
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================
+         TRUST BAR
+    ================================= -->
+
+    <section class="trust-bar">
+
+        <div class="container">
+
+            <div class="trust-box">
+
+                <div class="trust-item">
+                    <i class="fa-solid fa-shield-check"></i>
+                    Trusted Service
+                </div>
+
+                <div class="trust-item">
+                    <i class="fa-solid fa-bolt"></i>
+                    Fast Response
+                </div>
+
+                <div class="trust-item">
+                    <i class="fa-solid fa-user-gear"></i>
+                    Skilled Professionals
+                </div>
+
+                <div class="trust-item">
+                    <i class="fa-solid fa-headset"></i>
+                    Customer Support
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================
+         ABOUT
+    ================================= -->
+
+    <section class="about-section">
+
+        <div class="container">
+
+            <div class="about-grid">
+
+
+                <!-- CONTENT -->
+
+                <div class="about-content">
+
+                    <span class="eyebrow">
+                        Who We Are
+                    </span>
+
+                    <h2>
+                        Your Reliable Partner
+                        for <span>Repair & Maintenance</span>
+                    </h2>
+
+                    <p>
+                        At <strong>Cryovix Fixify</strong>, we believe
+                        getting professional repair services should
+                        be easy, transparent and dependable.
+                    </p>
+
+                    <p>
+                        Our platform connects customers with
+                        reliable service professionals while making
+                        booking and service management simple.
+                    </p>
+
+                    <p>
+                        Whether you need routine maintenance,
+                        emergency assistance or professional
+                        technical support, our focus remains the same:
+                        quality workmanship and customer satisfaction.
+                    </p>
+
+
+                    <div class="about-list">
+
+                        <div class="about-list-item">
+                            <i class="fa-solid fa-check"></i>
+
+                            <span>
+                                Professional and reliable service solutions
+                            </span>
+                        </div>
+
+                        <div class="about-list-item">
+                            <i class="fa-solid fa-check"></i>
+
+                            <span>
+                                Simple and convenient booking experience
+                            </span>
+                        </div>
+
+                        <div class="about-list-item">
+                            <i class="fa-solid fa-check"></i>
+
+                            <span>
+                                Transparent communication and service
+                            </span>
+                        </div>
+
+                        <div class="about-list-item">
+                            <i class="fa-solid fa-check"></i>
+
+                            <span>
+                                Customer-focused support from start to finish
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- STATS -->
+
+                <div class="stats-container">
+
+                    <div class="stat-card">
+
+                        <h3>99.8%</h3>
+
+                        <p>
+                            Customer Satisfaction
+                        </p>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <h3>24/7</h3>
+
+                        <p>
+                            Service Support
+                        </p>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <h3>Fast</h3>
+
+                        <p>
+                            Response & Booking
+                        </p>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <h3>100%</h3>
+
+                        <p>
+                            Customer Focused
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================
+         WHY CHOOSE US
+    ================================= -->
+
+    <section class="features-section"
+             id="why-us">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <span class="eyebrow">
+                    Why Cryovix Fixify
+                </span>
+
+                <h2>
+                    Built Around Quality,
+                    Speed & Trust
+                </h2>
+
+                <p>
+                    Everything we do is designed to give
+                    customers a smoother and more reliable
+                    service experience.
+                </p>
+
+            </div>
+
+
+            <div class="features-grid">
+
+
+                <!-- CARD 1 -->
+
+                <div class="feature-card">
+
+                    <span class="feature-number">
+                        01
+                    </span>
+
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+
+                    <h3>
+                        Reliable Professionals
+                    </h3>
+
+                    <p>
+                        We focus on connecting customers with
+                        skilled and dependable service professionals
+                        who take quality seriously.
+                    </p>
+
+                </div>
+
+
+                <!-- CARD 2 -->
+
+                <div class="feature-card">
+
+                    <span class="feature-number">
+                        02
+                    </span>
+
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+
+                    <h3>
+                        Fast & Simple Booking
+                    </h3>
+
+                    <p>
+                        Book and manage your repair service with
+                        a simple process designed to save time
+                        and reduce unnecessary delays.
+                    </p>
+
+                </div>
+
+
+                <!-- CARD 3 -->
+
+                <div class="feature-card">
+
+                    <span class="feature-number">
+                        03
+                    </span>
+
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+
+                    <h3>
+                        Transparent Service
+                    </h3>
+
+                    <p>
+                        Clear communication and straightforward
+                        service information help customers stay
+                        informed throughout the process.
+                    </p>
+
+                </div>
+
+
+                <!-- CARD 4 -->
+
+                <div class="feature-card">
+
+                    <span class="feature-number">
+                        04
+                    </span>
+
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+
+                    <h3>
+                        Time-Saving Solutions
+                    </h3>
+
+                    <p>
+                        Our approach is designed to make service
+                        requests quicker, easier and more convenient
+                        for busy customers.
+                    </p>
+
+                </div>
+
+
+                <!-- CARD 5 -->
+
+                <div class="feature-card">
+
+                    <span class="feature-number">
+                        05
+                    </span>
+
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+
+                    <h3>
+                        Customer Support
+                    </h3>
+
+                    <p>
+                        We put customer experience first by
+                        providing helpful communication before,
+                        during and after service.
+                    </p>
+
+                </div>
+
+
+                <!-- CARD 6 -->
+
+                <div class="feature-card">
+
+                    <span class="feature-number">
+                        06
+                    </span>
+
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-gears"></i>
+                    </div>
+
+                    <h3>
+                        Complete Solutions
+                    </h3>
+
+                    <p>
+                        From routine maintenance to urgent repairs,
+                        Cryovix Fixify is designed to support a wide
+                        range of service requirements.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================
+         CTA
+    ================================= -->
+
+    <section class="cta-section"
+             id="contact">
+
+        <div class="container">
+
+            <div class="cta-box">
+
+                <h2>
+                    Need a Reliable Repair Service?
+                </h2>
+
+                <p>
+                    Let Cryovix Fixify make your repair and
+                    maintenance experience simple, professional
+                    and hassle-free.
+                </p>
+
+                <a href="index.html"
+                   class="cta-button">
+
+                    Explore Our Services
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+</body>
+</html>

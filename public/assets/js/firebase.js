@@ -64,3 +64,63 @@ export {
   uploadBytes,
   getDownloadURL
 };
+
+// js/firebase.js
+
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+
+import {
+    getAuth,
+    GoogleAuthProvider,
+    signInWithPopup,
+    signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+import {
+    getFirestore
+} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+
+const firebaseConfig = {
+
+    apiKey: "AIzaSyDFxFdt_0hEzJnR3Ze-GfX_1uCzW_lgfnE",
+
+    authDomain: "cryovix-fixify.firebaseapp.com",
+
+    projectId: "cryovix-fixify",
+
+    storageBucket: "cryovix-fixify.firebasestorage.app",
+
+    messagingSenderId: "871696054329",
+
+    appId: "1:871696054329:web:4291aa97259ac0616875e8",
+
+    measurementId: "G-FRX2EKB0NL"
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+const db = getFirestore(app);
+
+const googleProvider = new GoogleAuthProvider();
+
+
+export {
+    app,
+    auth,
+    db,
+    googleProvider,
+    signInWithPopup,
+    signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged
+};

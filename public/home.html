@@ -27,7 +27,7 @@
             <a href="my-bookings.html">My Bookings</a>
             <a href="account.html">Account</a>
             <a href="offers.html">Offers</a>
-            <a href="member.html">Membership</a>
+            <a href="Membership.html">Membership</a>
             <a href="help.html">Help</a>
         </nav>
         <div class="nav-actions">
@@ -325,50 +325,85 @@
             </div>
         </div>
     </footer>
-<!-- Realtime Firebase Connectivity Module Script -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyDFxFdt_0hEzJnR3Ze-GfX_1uCzW_lgfnE",
-    authDomain: "cryovix-fixify.firebaseapp.com",
-    projectId: "cryovix-fixify",
-    storageBucket: "cryovix-fixify.firebasestorage.app",
-    messagingSenderId: "871696054329",
-    appId: "1:871696054329:web:4291aa97259ac0616875e8",
-    measurementId: "G-FRX2EKB0NL"
-  };
+<!-- Firebase SDK Modules -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+    const firebaseConfig = {
+      apiKey: "AIzaSyA6i1kfeHbjfnpoGEhKA547RfiEs4YPxWs",
+      authDomain: "cryovix-fixify-9568.firebaseapp.com",
+      databaseURL: "https://cryovix-fixify-9568-default-rtdb.firebaseio.com",
+      projectId: "cryovix-fixify-9568",
+      storageBucket: "cryovix-fixify-9568.firebasestorage.app",
+      messagingSenderId: "1085216868854",
+      appId: "1:1085216868854:web:a64ade2b08a871bfdf9fd7",
+      measurementId: "G-GPXDLR50SR"
+    };
 
-  // Firestore mein Customer Activity log karne ke liye
-  async function logCustomerSearch() {
-    const loc = document.getElementById("heroLocSelect")?.value || "Mumbai, India";
-    const query = document.getElementById("heroSearchInput")?.value || "";
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
 
-    if (!query.trim()) {
-      alert("Kripya service ka naam type karein!");
-      return;
+    // ---------------- TELEGRAM CONFIGURATION ----------------
+    const TELEGRAM_BOT_TOKEN = "APNA_BOT_TOKEN_HERE"; // @BotFather wala token
+    const TELEGRAM_CHAT_ID = "APNI_CHAT_ID_HERE";     // @userinfobot wali ID
+
+    async function sendTelegramNotification(loc, query) {
+      const message = `🚨 *New Customer Search!*\n\n📍 *Location:* ${loc}\n🔍 *Query:* ${query}\n⏰ *Time:* ${new Date().toLocaleString()}`;
+      
+      const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+
+      try {
+        await fetch(url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            chat_id: TELEGRAM_CHAT_ID,
+            text: message,
+            parse_mode: "Markdown"
+          })
+        });
+        console.log("Telegram notification sent!");
+      } catch (error) {
+        console.error("Telegram Error:", error);
+      }
+    }
+    // --------------------------------------------------------
+
+    // Firestore search logger
+    async function logCustomerSearch() {
+      const loc = document.getElementById("heroLocSelect")?.value || "Mumbai, India";
+      const queryInput = document.getElementById("heroSearchInput");
+      const query = queryInput?.value || "";
+
+      if (!query.trim()) {
+        alert("Kripya service ka naam type karein!");
+        return;
+      }
+
+      try {
+        // 1. Firebase mein Save karein
+        await addDoc(collection(db, "customers"), {
+          name: "Web Visitor Search",
+          location: loc,
+          searchQuery: query,
+          timestamp: new Date().toISOString()
+        });
+
+        // 2. Telegram par Instant Notification bhejein
+        sendTelegramNotification(loc, query);
+
+        alert("✅ Aapki query submit ho gayi hai!");
+        if (queryInput) queryInput.value = "";
+      } catch (err) {
+        console.error("Error saving data:", err);
+        alert("❌ Error: Data save nahi ho paya. Console check karein.");
+      }
     }
 
-    try {
-      await addDoc(collection(db, "customers"), {
-        name: "Web Visitor Search",
-        location: loc,
-        searchQuery: query,
-        timestamp: new Date().toISOString()
-      });
-      alert("✅ Aapki query submit ho gayi hai!");
-      document.getElementById("heroSearchInput").value = "";
-    } catch (err) {
-      console.error("Error saving data:", err);
-    }
-  }
-
-  // Button click Event Binding
-  document.getElementById("heroSearchBtn")?.addEventListener("click", logCustomerSearch);
-</script>
+    // Attach click event
+    document.getElementById("heroSearchBtn")?.addEventListener("click", logCustomerSearch);
+  </script>
 </body>
 </html>

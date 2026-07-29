@@ -6,20 +6,12 @@
     <title>Book Service - Cryovix Fixify</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
     <style>
-        :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --bg-light: #f8fafc;
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --border: #e2e8f0;
-        }
+        :root { --primary: #6366f1; --primary-dark: #4f46e5; --bg-light: #f8fafc; --text-main: #0f172a; --text-muted: #64748b; --border: #e2e8f0; }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
         body { background-color: var(--bg-light); color: var(--text-main); padding: 20px; }
         .booking-container { max-width: 600px; margin: 20px auto; background: #ffffff; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 30px; border: 1px solid var(--border); }
-        .booking-header { text-align: center; margin-bottom: 25px; }
+        .booking-header { text-align: center; margin-bottom: 20px; }
         .booking-header h2 { font-size: 24px; color: var(--text-main); margin-bottom: 8px; }
         .form-group { margin-bottom: 18px; }
         .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--text-main); }
@@ -28,52 +20,60 @@
         .form-row .form-group { flex: 1; }
         .service-summary-card { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px; padding: 15px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 12px; }
         .service-summary-card .service-title { font-weight: 700; font-size: 16px; color: #166534; display: flex; align-items: center; gap: 8px; }
-        .service-meta-box { display: flex; justify-content: space-between; background: #ffffff; padding: 10px 14px; border-radius: 8px; border: 1px solid #dcfce7; }
-        .meta-item { display: flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: #0f172a; }
-        .location-btn { background: #10b981; color: white; border: none; padding: 10px 14px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
-        .btn-submit { width: 100%; background: var(--primary); color: white; padding: 14px; border: none; border-radius: 8px; font-weight: 700; font-size: 15px; cursor: pointer; transition: background 0.3s ease; margin-top: 10px; }
+        .btn-submit { width: 100%; background: var(--primary); color: white; padding: 14px; border: none; border-radius: 8px; font-weight: 700; font-size: 15px; cursor: pointer; transition: background 0.3s ease; }
         .btn-submit:hover { background: var(--primary-dark); }
-        .btn-submit:disabled { background: #94a3b8; cursor: not-allowed; }
-
-        /* My Booking View CSS */
-        #myBookingSection { display: none; }
-        .booking-card { background: #f8fafc; border: 1px dashed var(--primary); border-radius: 12px; padding: 20px; margin-top: 15px; }
-        .booking-card-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e2e8f0; font-size: 14px; }
-        .booking-card-item:last-child { border-bottom: none; }
-        .label { font-weight: 600; color: var(--text-muted); }
-        .value { font-weight: 700; color: var(--text-main); text-align: right; }
-        .status-badge { background: #dcfce7; color: #15803d; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 700; }
-        .btn-secondary { width: 100%; background: #0f172a; color: white; padding: 12px; border: none; border-radius: 8px; font-weight: 600; font-size: 14px; cursor: pointer; margin-top: 15px; }
+        .btn-google { width: 100%; background: #ffffff; color: #374151; border: 1px solid var(--border); padding: 12px; border-radius: 8px; font-weight: 600; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 15px; }
+        #authSection { display: block; }
+        #bookingFormSection { display: none; }
+        .user-header-info { display: flex; justify-content: space-between; align-items: center; background: #e0e7ff; padding: 10px 15px; border-radius: 8px; margin-bottom: 15px; font-size: 13px; }
+        .btn-location { background: #10b981; color: white; border: none; padding: 8px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; margin-top: 6px; display: inline-flex; align-items: center; gap: 6px; }
+        .btn-location:hover { background: #059669; }
     </style>
 </head>
 <body>
 
-    <!-- 1. BOOKING FORM CONTAINER -->
-    <div class="booking-container" id="bookingFormSection">
+    <!-- AUTH SECTION -->
+    <div class="booking-container" id="authSection">
         <div class="booking-header">
-            <h2><i class="fa-solid fa-calendar-check" style="color: var(--primary);"></i> Complete Your Booking</h2>
-            <p style="font-size: 13px; color: var(--text-muted);">Enter details & select your location</p>
+            <h2><i class="fa-solid fa-user-lock" style="color: var(--primary);"></i> Login to Book</h2>
+            <p style="font-size: 13px; color: var(--text-muted);">Please login with Google once to access all features</p>
+        </div>
+        <button type="button" class="btn-google" id="googleLoginBtn">
+            <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" width="18">
+            Continue with Google
+        </button>
+    </div>
+
+    <!-- BOOKING FORM SECTION -->
+    <div class="booking-container" id="bookingFormSection">
+        <div class="user-header-info">
+            <span>Logged in as: <strong id="userDisplayEmail">-</strong></span>
+            <div>
+                <a href="my-bookings.html" style="margin-right: 10px; color: var(--primary); text-decoration: none; font-weight: 700;">My Bookings</a>
+                <button id="logoutBtn" style="background: none; border: none; color: #ef4444; font-weight: 700; cursor: pointer;">Logout</button>
+            </div>
+        </div>
+
+        <div class="booking-header">
+            <h2><i class="fa-solid fa-calendar-check" style="color: var(--primary);"></i> Book Service</h2>
         </div>
 
         <form id="bookingForm">
             <div class="service-summary-card">
                 <div class="service-title">
-                    <i class="fa-solid fa-screwdriver-wrench"></i> <span id="displayService">General Service</span>
+                    <i class="fa-solid fa-screwdriver-wrench"></i> <span id="displayService">AC Repair & Maintenance</span>
                 </div>
-                <div class="service-meta-box">
-                    <div class="meta-item"><i class="fa-solid fa-tag" style="color: #166534;"></i> <span id="displayPrice">₹499</span></div>
-                    <div class="meta-item"><i class="fa-solid fa-clock" style="color: #166534;"></i> <span id="displayOffer">Standard Rate</span></div>
-                </div>
+                <div style="font-size: 14px; font-weight: 700; color: #166534;" id="displayPrice">₹499</div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
                     <label>Full Name</label>
-                    <input type="text" id="custName" placeholder="Enter your name" required>
+                    <input type="text" id="custName" placeholder="Enter name" required>
                 </div>
                 <div class="form-group">
                     <label>Phone Number</label>
-                    <input type="tel" id="custPhone" placeholder="10-digit mobile number" pattern="[0-9]{10}" required>
+                    <input type="tel" id="custPhone" placeholder="10-digit mobile" pattern="[0-9]{10}" required>
                 </div>
             </div>
 
@@ -94,177 +94,127 @@
             </div>
 
             <div class="form-group">
-                <label>Complete Address</label>
-                <textarea id="custAddress" rows="2" placeholder="House No, Building, Street Name" required></textarea>
+                <label>Address</label>
+                <textarea id="custAddress" rows="2" placeholder="Complete Address" required></textarea>
+                <button type="button" class="btn-location" onclick="getLiveLocation()">
+                    <i class="fa-solid fa-location-crosshairs"></i> Fetch Google Maps Live Location
+                </button>
+                <input type="hidden" id="geoMapUrl" value="">
+                <p id="locStatus" style="font-size: 11px; color: #10b981; margin-top: 4px; font-weight: 600;"></p>
             </div>
 
-            <div class="form-group">
-                <label>City</label>
-                <input type="text" id="custCity" value="Mumbai" required>
-            </div>
-
-            <div class="form-group">
-                <label>Live Location Link (Optional)</label>
-                <button type="button" class="location-btn" id="geoBtn"><i class="fa-solid fa-location-crosshairs"></i> Detect My Live GPS</button>
-                <input type="hidden" id="googleMapLink" value="Not Shared">
-            </div>
-
-            <button type="submit" class="btn-submit" id="submitBtn">Confirm & Book Now</button>
+            <button type="submit" class="btn-submit" id="submitBtn">Confirm Booking</button>
         </form>
-    </div>
-
-    <!-- 2. MY BOOKING DETAILS CONTAINER (Opens After Confirmation) -->
-    <div class="booking-container" id="myBookingSection">
-        <div class="booking-header">
-            <i class="fa-solid fa-circle-check" style="font-size: 48px; color: #10b981; margin-bottom: 10px;"></i>
-            <h2>My Booking Details</h2>
-            <p style="font-size: 13px; color: var(--text-muted);">Your booking is confirmed! Here are the details:</p>
-        </div>
-
-        <div class="booking-card">
-            <div class="booking-card-item">
-                <span class="label">Booking Status</span>
-                <span class="status-badge">Confirmed</span>
-            </div>
-            <div class="booking-card-item">
-                <span class="label">Customer Name</span>
-                <span class="value" id="viewName">-</span>
-            </div>
-            <div class="booking-card-item">
-                <span class="label">Phone Number</span>
-                <span class="value" id="viewPhone">-</span>
-            </div>
-            <div class="booking-card-item">
-                <span class="label">Service Requested</span>
-                <span class="value" id="viewService">-</span>
-            </div>
-            <div class="booking-card-item">
-                <span class="label">Total Amount</span>
-                <span class="value" id="viewPrice" style="color: #166534;">-</span>
-            </div>
-            <div class="booking-card-item">
-                <span class="label">Date & Time</span>
-                <span class="value" id="viewDateTime">-</span>
-            </div>
-            <div class="booking-card-item">
-                <span class="label">Address</span>
-                <span class="value" id="viewAddress">-</span>
-            </div>
-        </div>
-
-        <button class="btn-secondary" onclick="window.location.reload();">Book Another Service</button>
     </div>
 
     <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 
     <script>
         const firebaseConfig = {
-            apiKey: "AIzaSyDFxFdt_0hEzJnR3Ze-GfX_1uCzW_lgfnE",
-            authDomain: "cryovix-fixify.firebaseapp.com",
-            projectId: "cryovix-fixify",
-            storageBucket: "cryovix-fixify.firebasestorage.app",
-            messagingSenderId: "871696054329",
-            appId: "1:871696054329:web:4291aa97259ac0616875e8"
+            apiKey: "AIzaSyA6i1kfeHbjfnpoGEhKA547RfiEs4YPxWs",
+            authDomain: "cryovix-fixify-9568.firebaseapp.com",
+            projectId: "cryovix-fixify-9568",
+            storageBucket: "cryovix-fixify-9568.firebasestorage.app",
+            messagingSenderId: "1085216868854",
+            appId: "1:1085216868854:web:a64ade2b08a871bfdf9fd7"
         };
 
-        let db = null;
-        try {
-            if (!firebase.apps.length) {
-                firebase.initializeApp(firebaseConfig);
-            }
-            db = firebase.firestore();
-        } catch (e) {
-            console.error("Firebase init error:", e);
-        }
+        if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const serviceName = urlParams.get('service') || 'General Home Service';
-        let rawPrice = urlParams.get('price') || urlParams.get('offer') || '499';
-        rawPrice = rawPrice.replace(/₹/g, '').trim();
+        document.getElementById('custDate').setAttribute('min', new Date().toISOString().split('T')[0]);
 
-        document.getElementById('displayService').innerText = serviceName;
-        document.getElementById('displayPrice').innerText = '₹' + rawPrice;
-        document.getElementById('displayOffer').innerText = urlParams.get('offer') ? 'Offer Applied' : 'Standard Rate';
-
-        // GPS Location
-        document.getElementById('geoBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    const lat = position.coords.latitude;
-                    const lng = position.coords.longitude;
-                    document.getElementById('googleMapLink').value = `https://maps.google.com/?q=${lat},${lng}`;
-                    alert("📍 GPS Location captured successfully!");
-                }, function() {
-                    alert("Could not detect location. Please fill address manually.");
-                });
+        // Global Persistent Auth State Listener
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                document.getElementById('authSection').style.display = 'none';
+                document.getElementById('bookingFormSection').style.display = 'block';
+                document.getElementById('userDisplayEmail').innerText = user.email;
+                if (user.displayName) document.getElementById('custName').value = user.displayName;
             } else {
-                alert("Geolocation is not supported by your browser.");
+                document.getElementById('authSection').style.display = 'block';
+                document.getElementById('bookingFormSection').style.display = 'none';
             }
         });
 
-        // Form Submission Logic
-        document.getElementById('bookingForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
+        document.getElementById('googleLoginBtn').addEventListener('click', () => {
+            auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+                .then(() => auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()))
+                .catch(err => alert("Login Error: " + err.message));
+        });
 
-            const submitBtn = document.getElementById('submitBtn');
-            submitBtn.innerText = "Saving Booking...";
-            submitBtn.disabled = true;
+        document.getElementById('logoutBtn').addEventListener('click', () => auth.signOut());
+
+        // Google Maps Live Location Fetcher
+        function getLiveLocation() {
+            const status = document.getElementById('locStatus');
+            if ("geolocation" in navigator) {
+                status.innerText = "Fetching location...";
+                navigator.geolocation.getCurrentPosition(position => {
+                    const lat = position.coords.latitude;
+                    const lng = position.coords.longitude;
+                    const mapUrl = `https://www.google.com/maps?q=${lat},${lng}`;
+                    document.getElementById('geoMapUrl').value = mapUrl;
+                    status.innerText = "✅ Live Google Maps Location Attached!";
+                }, error => {
+                    status.innerText = "❌ Unable to retrieve location. Please allow location access.";
+                }, { enableHighAccuracy: true });
+            } else {
+                status.innerText = "❌ Geolocation is not supported by your browser.";
+            }
+        }
+
+        // Form Submit
+        document.getElementById('bookingForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            btn.innerText = "Processing...";
+
+            const mapUrl = document.getElementById('geoMapUrl').value || "Not Shared";
 
             const bookingData = {
+                userEmail: auth.currentUser.email,
                 name: document.getElementById('custName').value.trim(),
                 phone: document.getElementById('custPhone').value.trim(),
-                service: serviceName,
+                service: document.getElementById('displayService').innerText,
                 price: document.getElementById('displayPrice').innerText,
                 date: document.getElementById('custDate').value,
                 timeSlot: document.getElementById('custSlot').value,
-                address: document.getElementById('custAddress').value.trim() + ", " + document.getElementById('custCity').value.trim(),
-                googleMapLink: document.getElementById('googleMapLink').value,
-                timestamp: new Date().toISOString()
+                address: document.getElementById('custAddress').value.trim(),
+                googleMapUrl: mapUrl,
+                status: "Pending",
+                technicianName: "",
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
             };
 
             try {
-                if (db) {
-                    await db.collection("customers").add(bookingData);
-                } else {
-                    throw new Error("Firebase connection failed.");
-                }
+                const docRef = await db.collection("customers").add(bookingData);
 
-                // Telegram Alert
-                const botToken = "8817937034:AAGI-_31FYe3frL_N5qINHK2eGEpeQrJIJk"; 
+                // Telegram Alert to Admin with Google Maps Link
+                const botToken = "8817937034:AAGI-_31FYe3frL_N5qINHK2eGEpeQrJIJk";
                 const chatId = "8528476017";
-                const telegramMsg = encodeURIComponent(
-                    `🚨 NEW BOOKING ALERT\n\nName: ${bookingData.name}\nPhone: ${bookingData.phone}\nService: ${bookingData.service}\nPrice: ${bookingData.price}\nDate: ${bookingData.date}`
-                );
+                const msg = `🚨 NEW BOOKING ALERT!\n\n🆔 ID: ${docRef.id}\n👤 Name: ${bookingData.name}\n📧 Email: ${bookingData.userEmail}\n📞 Phone: ${bookingData.phone}\n🛠️ Service: ${bookingData.service}\n💰 Price: ${bookingData.price}\n📅 Date: ${bookingData.date} (${bookingData.timeSlot})\n📍 Address: ${bookingData.address}\n🗺️ Live Location: ${mapUrl}`;
 
-                fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${telegramMsg}`, { mode: 'no-cors' })
-                    .catch(err => console.warn("Telegram failed:", err));
+                await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chat_id: chatId, text: msg })
+                });
 
-                // Open 'My Booking' Section
-                showMyBookingDetails(bookingData);
+                alert("🎉 Booking Confirmed Successfully!");
+                window.location.href = "my-bookings.html";
 
             } catch (err) {
-                console.error("Booking error:", err);
-                alert("⚠️ Booking Error: " + err.message);
-                submitBtn.innerText = "Confirm & Book Now";
-                submitBtn.disabled = false;
+                alert("Error: " + err.message);
+                btn.disabled = false;
+                btn.innerText = "Confirm Booking";
             }
         });
-
-        // Function to render My Booking Details Card
-        function showMyBookingDetails(data) {
-            document.getElementById('bookingFormSection').style.display = 'none';
-            document.getElementById('myBookingSection').style.display = 'block';
-
-            document.getElementById('viewName').innerText = data.name;
-            document.getElementById('viewPhone').innerText = data.phone;
-            document.getElementById('viewService').innerText = data.service;
-            document.getElementById('viewPrice').innerText = data.price;
-            document.getElementById('viewDateTime').innerText = `${data.date} (${data.timeSlot})`;
-            document.getElementById('viewAddress').innerText = data.address;
-        }
     </script>
 </body>
 </html>

@@ -1,0 +1,13 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Apke baaki ke rules/matches yahan aayenge:
+    
+    match /users/{userId} {
+      allow read, write: if request.auth != null;
+    }
+
+  } // <-- Pehla closing bracket
+}   // <-- Doosra closing bracket

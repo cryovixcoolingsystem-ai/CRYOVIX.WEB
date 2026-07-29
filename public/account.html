@@ -2,44 +2,1143 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>My Account - Cryovix Fixify</title>
-    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Plus Jakarta Sans", sans-serif;
+            background: #f5f7fb;
+            color: #172033;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: auto;
+            padding: 35px 20px 60px;
+        }
+
+        /* HEADER */
+        .topbar {
+            background: #fff;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .topbar-inner {
+            max-width: 950px;
+            margin: auto;
+            padding: 18px 20px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            text-decoration: none;
+            color: #2563eb;
+            font-weight: 800;
+            font-size: 18px;
+        }
+
+        .back-btn {
+            text-decoration: none;
+            color: #475569;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        /* PROFILE */
+        .profile-card {
+            background: white;
+            border-radius: 18px;
+            padding: 25px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 8px 30px rgba(15,23,42,.06);
+            margin-bottom: 22px;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 25px;
+        }
+
+        .profile-photo {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #dbeafe;
+            border: 3px solid #eff6ff;
+        }
+
+        .profile-name {
+            font-size: 22px;
+            font-weight: 800;
+        }
+
+        .profile-email {
+            font-size: 12px;
+            color: #64748b;
+            margin-top: 4px;
+        }
+
+        .google-user {
+            display: inline-block;
+            margin-top: 7px;
+            font-size: 10px;
+            background: #dcfce7;
+            color: #15803d;
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-weight: 700;
+        }
+
+        /* INFO GRID */
+        .section-title {
+            font-size: 18px;
+            margin-bottom: 14px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 13px;
+        }
+
+        .info-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 15px;
+            border-radius: 11px;
+        }
+
+        .info-box label {
+            display: block;
+            font-size: 10px;
+            color: #64748b;
+            font-weight: 700;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .info-box span {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            word-break: break-word;
+        }
+
+        /* MEMBERSHIP */
+        .membership-card {
+            position: relative;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #111827,
+                    #1d4ed8,
+                    #2563eb
+                );
+
+            color: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 15px 40px rgba(37,99,235,.22);
+        }
+
+        .membership-card::after {
+            content: "";
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            right: -80px;
+            top: -100px;
+            background: rgba(255,255,255,.08);
+        }
+
+        .membership-top {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
+        }
+
+        .brand {
+            font-weight: 800;
+            font-size: 13px;
+        }
+
+        .status {
+            background: #22c55e;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 9px;
+            font-weight: 800;
+        }
+
+        .membership-plan {
+            margin-top: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .membership-plan small,
+        .membership-id small {
+            opacity: .7;
+            font-size: 9px;
+        }
+
+        .membership-plan h2 {
+            font-size: 25px;
+            margin-top: 4px;
+        }
+
+        .membership-id {
+            margin-top: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .membership-id strong {
+            display: block;
+            font-size: 19px;
+            letter-spacing: 1px;
+            margin-top: 3px;
+        }
+
+        .membership-bottom {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 28px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .membership-bottom small {
+            display: block;
+            opacity: .7;
+            font-size: 8px;
+        }
+
+        .membership-bottom strong {
+            display: block;
+            font-size: 11px;
+            margin-top: 3px;
+        }
+
+        /* NO MEMBERSHIP */
+        .no-membership {
+            display: none;
+            background: white;
+            padding: 25px;
+            text-align: center;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .no-membership i {
+            font-size: 30px;
+            color: #94a3b8;
+            margin-bottom: 10px;
+        }
+
+        .no-membership p {
+            color: #64748b;
+            font-size: 12px;
+            margin: 7px 0 15px;
+        }
+
+        .membership-btn {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 11px 18px;
+            border-radius: 9px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* LOGOUT */
+        .logout {
+            width: 100%;
+            margin-top: 25px;
+            padding: 13px;
+            border: none;
+            border-radius: 10px;
+            background: #fee2e2;
+            color: #dc2626;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        /* LOADING */
+        #loading {
+            text-align: center;
+            padding: 50px;
+            color: #64748b;
+        }
+
+        #accountContent {
+            display: none;
+        }
+
+        /* MOBILE */
+        @media(max-width: 650px) {
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .membership-bottom {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-header {
+                align-items: flex-start;
+            }
+
+            .profile-photo {
+                width: 60px;
+                height: 60px;
+            }
+
+            .profile-name {
+                font-size: 18px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-<div style="max-width: 600px; margin: 50px auto; padding: 20px;">
-    <h2>Customer Profile</h2>
-    <div id="userInfo" style="background: #f8fafc; padding: 15px; border-radius: 8px;">
-        <p><strong>Email:</strong> <span id="userEmail">Loading...</span></p>
-        <p><strong>User ID:</strong> <span id="userId">Loading...</span></p>
+<!-- HEADER -->
+<header class="topbar">
+
+    <div class="topbar-inner">
+
+        <a href="index.html" class="logo">
+            <i class="fa-solid fa-snowflake"></i>
+            CRYOVIX FIXIFY
+        </a>
+
+        <a href="index.html" class="back-btn">
+            <i class="fa-solid fa-arrow-left"></i>
+            Home
+        </a>
+
     </div>
-    <button id="logoutBtn" style="margin-top: 15px; padding: 8px 16px; background: #ef4444; color: white; border: none; border-radius: 6px; cursor: pointer;">Logout</button>
+
+</header>
+
+
+<div class="container">
+
+    <!-- LOADING -->
+    <div id="loading">
+
+        <i class="fa-solid fa-spinner fa-spin"></i>
+
+        <p style="margin-top:10px;">
+            Loading your account...
+        </p>
+
+    </div>
+
+
+    <!-- ACCOUNT CONTENT -->
+    <div id="accountContent">
+
+        <!-- PROFILE -->
+        <div class="profile-card">
+
+            <div class="profile-header">
+
+                <img
+                    id="profilePhoto"
+                    class="profile-photo"
+                    src="https://ui-avatars.com/api/?name=User"
+                    alt="Profile">
+
+                <div>
+
+                    <div class="profile-name"
+                         id="profileName">
+                        Customer
+                    </div>
+
+                    <div class="profile-email"
+                         id="profileEmail">
+                        Loading...
+                    </div>
+
+                    <span class="google-user"
+                          id="loginProvider">
+                        Verified Account
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- USER DETAILS -->
+            <h3 class="section-title">
+                <i class="fa-solid fa-user"></i>
+                Account Details
+            </h3>
+
+            <div class="info-grid">
+
+                <div class="info-box">
+                    <label>Full Name</label>
+                    <span id="userName">--</span>
+                </div>
+
+                <div class="info-box">
+                    <label>Email</label>
+                    <span id="userEmail">--</span>
+                </div>
+
+                <div class="info-box">
+                    <label>Firebase User ID</label>
+                    <span id="userId">--</span>
+                </div>
+
+                <div class="info-box">
+                    <label>Login Method</label>
+                    <span id="loginMethod">--</span>
+                </div>
+
+                <div class="info-box">
+                    <label>Account Created</label>
+                    <span id="accountCreated">--</span>
+                </div>
+
+                <div class="info-box">
+                    <label>Email Verified</label>
+                    <span id="emailVerified">--</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- MEMBERSHIP -->
+        <h3 class="section-title">
+
+            <i class="fa-solid fa-crown"></i>
+            My Membership
+
+        </h3>
+
+
+        <!-- ACTIVE MEMBERSHIP CARD -->
+        <div class="membership-card"
+             id="membershipCard"
+             style="display:none;">
+
+            <div class="membership-top">
+
+                <div class="brand">
+
+                    <i class="fa-solid fa-snowflake"></i>
+                    CRYOVIX FIXIFY
+
+                </div>
+
+                <div class="status"
+                     id="membershipStatus">
+
+                    ACTIVE
+
+                </div>
+
+            </div>
+
+
+            <div class="membership-plan">
+
+                <small>MEMBERSHIP PLAN</small>
+
+                <h2 id="membershipPlan">
+                    Prime
+                </h2>
+
+            </div>
+
+
+            <div class="membership-id">
+
+                <small>MEMBERSHIP ID</small>
+
+                <strong id="membershipId">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="membership-bottom">
+
+                <div>
+
+                    <small>MEMBER</small>
+
+                    <strong id="membershipUser">
+                        --
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <small>START DATE</small>
+
+                    <strong id="membershipStart">
+                        --
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <small>VALID UNTIL</small>
+
+                    <strong id="membershipExpiry">
+                        --
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- NO MEMBERSHIP -->
+        <div class="no-membership"
+             id="noMembership">
+
+            <i class="fa-solid fa-id-card"></i>
+
+            <h3>No Active Membership</h3>
+
+            <p>
+                You don't have an active Cryovix Fixify membership yet.
+            </p>
+
+            <a href="membership.html"
+               class="membership-btn">
+
+                <i class="fa-solid fa-crown"></i>
+                Get Membership
+
+            </a>
+
+        </div>
+
+
+        <!-- LOGOUT -->
+        <button id="logoutBtn"
+                class="logout">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Logout
+
+        </button>
+
+    </div>
+
 </div>
 
+
+<!-- FIREBASE SCRIPT -->
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
-  const firebaseConfig = { /* Same Config Here */ };
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
+/* =========================================================
+   FIREBASE IMPORTS
+   ========================================================= */
 
-  // User Session Check
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      document.getElementById('userEmail').innerText = user.email;
-      document.getElementById('userId').innerText = user.uid;
-    } else {
-      window.location.href = "login.html"; // Login par bhej do agar logged in nahi hai
+import {
+    initializeApp
+}
+from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+
+
+import {
+    getAuth,
+    onAuthStateChanged,
+    signOut
+}
+from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+
+import {
+    getFirestore,
+    collection,
+    query,
+    where,
+    getDocs
+}
+from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+
+/* =========================================================
+   FIREBASE CONFIG
+   ========================================================= */
+
+const firebaseConfig = {
+
+    apiKey:
+        "AIzaSyDFxFdt_0hEzJnR3Ze-GfX_1uCzW_lgfnE",
+
+    authDomain:
+        "cryovix-fixify.firebaseapp.com",
+
+    projectId:
+        "cryovix-fixify",
+
+    storageBucket:
+        "cryovix-fixify.firebasestorage.app",
+
+    messagingSenderId:
+        "871696054329",
+
+    appId:
+        "1:871696054329:web:4291aa97259ac0616875e8",
+
+    measurementId:
+        "G-FRX2EKB0NL"
+};
+
+
+/* =========================================================
+   FIREBASE INITIALIZE
+   ========================================================= */
+
+const app =
+    initializeApp(firebaseConfig);
+
+const auth =
+    getAuth(app);
+
+const db =
+    getFirestore(app);
+
+
+/* =========================================================
+   AUTH STATE
+   ========================================================= */
+
+onAuthStateChanged(auth, async (user) => {
+
+    if (!user) {
+
+        // Login nahi hai
+        window.location.href =
+            "login.html";
+
+        return;
     }
-  });
 
-  // Logout Function
-  document.getElementById('logoutBtn').addEventListener('click', () => {
-    signOut(auth).then(() => {
-      window.location.href = "login.html";
-    });
-  });
+
+    /* Account page show */
+    document
+        .getElementById("loading")
+        .style.display = "none";
+
+    document
+        .getElementById("accountContent")
+        .style.display = "block";
+
+
+    /* =====================================================
+       BASIC USER DETAILS
+       ===================================================== */
+
+    const name =
+        user.displayName ||
+        user.email?.split("@")[0] ||
+        "Customer";
+
+    const email =
+        user.email || "--";
+
+    const uid =
+        user.uid || "--";
+
+
+    document
+        .getElementById("profileName")
+        .textContent = name;
+
+    document
+        .getElementById("profileEmail")
+        .textContent = email;
+
+    document
+        .getElementById("userName")
+        .textContent = name;
+
+    document
+        .getElementById("userEmail")
+        .textContent = email;
+
+    document
+        .getElementById("userId")
+        .textContent = uid;
+
+
+    /* Profile Photo */
+
+    if (user.photoURL) {
+
+        document
+            .getElementById("profilePhoto")
+            .src = user.photoURL;
+
+    } else {
+
+        document
+            .getElementById("profilePhoto")
+            .src =
+            `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=2563eb&color=fff`;
+
+    }
+
+
+    /* =====================================================
+       LOGIN PROVIDER
+       ===================================================== */
+
+    const providers =
+        user.providerData
+            .map(provider => provider.providerId);
+
+
+    let loginMethod =
+        "Email / Password";
+
+
+    if (
+        providers.includes(
+            "google.com"
+        )
+    ) {
+
+        loginMethod = "Google";
+
+    }
+
+
+    document
+        .getElementById("loginMethod")
+        .textContent =
+        loginMethod;
+
+
+    document
+        .getElementById("loginProvider")
+        .textContent =
+        loginMethod === "Google"
+            ? "Google Account"
+            : "Email Account";
+
+
+    /* =====================================================
+       EMAIL VERIFIED
+       ===================================================== */
+
+    document
+        .getElementById("emailVerified")
+        .textContent =
+        user.emailVerified
+            ? "Yes ✓"
+            : "No";
+
+
+    /* =====================================================
+       ACCOUNT CREATED DATE
+       ===================================================== */
+
+    if (
+        user.metadata &&
+        user.metadata.creationTime
+    ) {
+
+        const created =
+            new Date(
+                user.metadata.creationTime
+            );
+
+        document
+            .getElementById("accountCreated")
+            .textContent =
+            formatDate(created);
+
+    }
+
+
+    /* =====================================================
+       FIRESTORE MEMBERSHIP
+       ===================================================== */
+
+    await loadMembership(user.uid);
+
+});
+
+
+/* =========================================================
+   LOAD MEMBERSHIP
+   ========================================================= */
+
+async function loadMembership(uid) {
+
+    try {
+
+        const membershipsRef =
+            collection(
+                db,
+                "memberships"
+            );
+
+
+        const q =
+            query(
+                membershipsRef,
+                where(
+                    "uid",
+                    "==",
+                    uid
+                ),
+                where(
+                    "status",
+                    "==",
+                    "Active"
+                )
+            );
+
+
+        const snapshot =
+            await getDocs(q);
+
+
+        if (snapshot.empty) {
+
+            showNoMembership();
+
+            return;
+        }
+
+
+        let membership = null;
+
+
+        snapshot.forEach(docSnap => {
+
+            const data =
+                docSnap.data();
+
+
+            /*
+             * Expiry check
+             */
+
+            if (
+                data.expiryDate
+            ) {
+
+                const expiry =
+                    data.expiryDate
+                        .toDate();
+
+
+                if (
+                    expiry > new Date()
+                ) {
+
+                    membership = data;
+
+                }
+
+            }
+
+        });
+
+
+        if (membership) {
+
+            showMembership(
+                membership
+            );
+
+        } else {
+
+            showNoMembership();
+
+        }
+
+
+    } catch (error) {
+
+        console.error(
+            "Membership loading error:",
+            error
+        );
+
+        showNoMembership();
+
+    }
+
+}
+
+
+/* =========================================================
+   SHOW MEMBERSHIP
+   ========================================================= */
+
+function showMembership(data) {
+
+    document
+        .getElementById("noMembership")
+        .style.display = "none";
+
+
+    document
+        .getElementById("membershipCard")
+        .style.display = "block";
+
+
+    document
+        .getElementById("membershipPlan")
+        .textContent =
+        data.plan || "Prime";
+
+
+    document
+        .getElementById("membershipId")
+        .textContent =
+        data.membershipId || "--";
+
+
+    document
+        .getElementById("membershipUser")
+        .textContent =
+        data.userName || "Customer";
+
+
+    document
+        .getElementById("membershipStatus")
+        .textContent =
+        data.status || "ACTIVE";
+
+
+    /* Created date */
+
+    if (
+        data.createdAt
+    ) {
+
+        let date;
+
+
+        if (
+            typeof data.createdAt.toDate ===
+            "function"
+        ) {
+
+            date =
+                data.createdAt.toDate();
+
+        } else {
+
+            date =
+                new Date(
+                    data.createdAt
+                );
+
+        }
+
+
+        document
+            .getElementById("membershipStart")
+            .textContent =
+            formatDate(date);
+
+    }
+
+
+    /* Expiry date */
+
+    if (
+        data.expiryDate
+    ) {
+
+        let expiry;
+
+
+        if (
+            typeof data.expiryDate.toDate ===
+            "function"
+        ) {
+
+            expiry =
+                data.expiryDate.toDate();
+
+        } else {
+
+            expiry =
+                new Date(
+                    data.expiryDate
+                );
+
+        }
+
+
+        document
+            .getElementById("membershipExpiry")
+            .textContent =
+            formatDate(expiry);
+
+    }
+
+}
+
+
+/* =========================================================
+   NO MEMBERSHIP
+   ========================================================= */
+
+function showNoMembership() {
+
+    document
+        .getElementById("membershipCard")
+        .style.display = "none";
+
+
+    document
+        .getElementById("noMembership")
+        .style.display = "block";
+
+}
+
+
+/* =========================================================
+   DATE FORMAT
+   ========================================================= */
+
+function formatDate(date) {
+
+    return date.toLocaleDateString(
+        "en-IN",
+        {
+            day: "2-digit",
+            month: "short",
+            year: "numeric"
+        }
+    );
+
+}
+
+
+/* =========================================================
+   LOGOUT
+   ========================================================= */
+
+document
+    .getElementById("logoutBtn")
+    .addEventListener(
+        "click",
+        async () => {
+
+            try {
+
+                await signOut(auth);
+
+                window.location.href =
+                    "login.html";
+
+            } catch (error) {
+
+                console.error(
+                    "Logout error:",
+                    error
+                );
+
+            }
+
+        }
+    );
+
+    import {
+    auth,
+    db
+} from "./js/firebase.js";
+
+import {
+    collection,
+    addDoc,
+    serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+
+const user = auth.currentUser;
+
+if (!user) {
+
+    alert("Please login first.");
+    window.location.href = "login.html";
+
+}
+
+
+await addDoc(
+    collection(db, "bookings"),
+    {
+
+        uid: user.uid,
+
+        name:
+            user.displayName ||
+            user.email.split("@")[0],
+
+        email:
+            user.email,
+
+        service: "AC Service",
+
+        createdAt:
+            serverTimestamp()
+
+    }
+);
+
 </script>
+
+
 </body>
 </html>
